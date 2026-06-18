@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Cuadernos Llenos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="Img/logo.png" alt="Cuadernos Llenos">
+            <span class="logo-text">CUADERNOS<br>LLENOS</span>
+        </a>
+        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
+        <nav class="menu">
+            <a href="quienes-somos.html">QUIENES SOMOS</a>
+            <a href="index.html">QUÉ HACEMOS</a>
+            <a href="mapa.html">PUNTOS DE ENCUENTRO</a>
+            <a href="contacto.html">CONTACTO</a>
+            <a href="quiero-ayudar.html" class="btn-nav-orange">QUIERO AYUDAR</a>
+        </nav>
+    </header>
+
+    <main class="contact-main">
+        <div class="contact-banner">
+            <h1>CONTACTO</h1>
+        </div>
+        
+        <section class="contact-intro">
+            <h2>Estamos para escucharte</h2>
+            <p>Si tenés dudas, consultas o necesitás más información sobre <strong>Cuadernos Llenos</strong>, podés escribirnos y nos pondremos en contacto a la brevedad.</p>
+        </section>
+
+        <section class="contact-form">
+            <h3>Formulario de contacto</h3>
+            <form action="#" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre y apellido</label>
+                        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input id="email" name="email" type="email" placeholder="tu@ejemplo.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group form-group-spaced">
+                    <label for="motivo">Motivo de consulta</label>
+                    <select id="motivo" name="motivo">
+                        <option>Información general</option>
+                        <option>Puntos de encuentro</option>
+                        <option>Alianzas institucionales</option>
+                        <option>Empresas y donaciones</option>
+                        <option>Reportar un inconveniente</option>
+                        <option>Otra consulta</option>
+                    </select>
+                </div>
+
+                <div class="form-group form-group-spaced">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Escribí tu mensaje aquí..."></textarea>
+                </div>
+
+                <div class="form-submit-container">
+                    <button type="submit" class="btn-send">Enviar mensaje</button>
+                </div>
+            </form>
+
+            <div class="divider"></div>
+
+            <div class="contact-info">
+                <h4>Información de contacto</h4>
+                <p>📍 Área de trabajo: Conurbano Bonaerense (GBA), Buenos Aires</p>
+                <p>📧 <a href="mailto:contacto@cuadernosllenos.org">contacto@cuadernosllenos.org</a></p>
+                <p>📞 (011) 4000-0000</p>
+            </div>
+
+            <div class="collab-section">
+                <h4 class="collab-title">¿Querés colaborar?</h4>
+                <p class="collab-text">Si querés ser voluntario, ofrecer un espacio o realizar una donación, visitá nuestra sección:</p>
+                <p><a href="quiero-ayudar.html" class="btn-send btn-link">Quiero Ayudar</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="contact">
+        <div class="contact-footer-content">
+            <h3 class="contact-footer-title">Contacto</h3>
+            <p class="contact-footer-text">Escribinos a <a href="mailto:info@cuadernosllenos.org" class="contact-footer-link">info@cuadernosllenos.org</a></p>
+            <p class="contact-footer-subtext">También podés encontrarnos en nuestras redes sociales.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+
+</body>
+</html>

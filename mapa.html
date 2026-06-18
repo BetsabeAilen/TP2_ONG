@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadernos Llenos - Puntos de Encuentro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">
+            <img src="Img/logo.png" alt="Cuadernos Llenos">
+            <span class="logo-text">CUADERNOS<br>LLENOS</span>
+        </a>
+        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
+        <nav class="menu">
+            <a href="quienes-somos.html">QUIENES SOMOS</a>
+            <a href="index.html">QUÉ HACEMOS</a>
+            <a href="mapa.html">PUNTOS DE ENCUENTRO</a>
+            <a href="contacto.html">CONTACTO</a>
+            <a href="quiero-ayudar.html" class="btn-nav-orange">QUIERO AYUDAR</a>
+        </nav>
+    </header>
+
+    <main class="map-main">
+        <div class="contact-banner">
+            <h1>PUNTOS DE ENCUENTRO</h1>
+        </div>
+
+        <section class="contact-intro">
+            <h2>Encuentra el sitio más cercano a su localidad</h2>
+        </section>
+
+        <section class="map-section">
+            <iframe
+                src="https://www.google.com/maps/d/embed?mid=1JbhkjwDSClgAV97AFXotj0ro_7JAI0I"
+                class="map-iframe"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+            
+            <p class="map-footer-text">
+                Para conocer más sobre nuestros Puntos de Encuentro —días y horarios, disponibilidad en los grupos de estudio o información de contacto de los voluntarios— podés comunicarte con nosotros.
+            </p>
+
+            <div class="map-btn-container">
+                <a href="contacto.html" class="btn-voluntario">Quiero más información</a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="contact">
+        <div class="contact-footer-content">
+            <h3 class="contact-footer-title">Contacto</h3>
+            <p class="contact-footer-text">Escribinos a <a href="mailto:info@cuadernosllenos.org" class="contact-footer-link">info@cuadernosllenos.org</a></p>
+            <p class="contact-footer-subtext">También podés encontrarnos en nuestras redes sociales.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+
+</body>
+</html>

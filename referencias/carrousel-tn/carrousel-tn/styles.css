@@ -1,0 +1,113 @@
+/*
+    Este archivo es el "vestuario" de la página.
+    CSS significa "Cascading Style Sheets" (Hojas de Estilo en Cascada).
+    Sirve para decirle al navegador CÓMO se tienen que ver los elementos del HTML:
+    colores, tamaños, posiciones, tipografías, etc.
+
+    La estructura básica de una regla CSS es:
+        selector {
+            propiedad: valor;
+        }
+    El "selector" indica a qué elemento(s) aplicar los estilos,
+    y dentro de las llaves van las propiedades con sus valores.
+*/
+
+
+/*
+    El asterisco "*" es un selector universal: significa "TODOS los elementos".
+    Acá aprovechamos para resetear (poner en cero) los espacios por defecto
+    que el navegador agrega automáticamente, y así arrancar "limpio".
+*/
+* {
+    margin: 0;          /* margin = espacio EXTERNO del elemento (separación con los de afuera). */
+    padding: 0;         /* padding = espacio INTERNO del elemento (separación del contenido al borde). */
+    box-sizing: border-box; /* Hace que el ancho y alto incluyan al borde y al padding, así es más fácil calcular tamaños. */
+}
+
+
+/*
+    Selector ".slides img" significa: todas las <img> que estén DENTRO
+    de un elemento con la clase "slides".
+    Como tenemos varias imágenes en el carrusel y solo queremos mostrar una a la vez,
+    las ocultamos a todas por defecto.
+*/
+.slides img {
+    display: none;      /* display: none = el elemento no se muestra y tampoco ocupa lugar. */
+}
+
+
+/*
+    Selector ".active" apunta al elemento que tenga la clase "active".
+    A esa imagen (la activa) sí la mostramos.
+    "!important" fuerza a que esta regla GANE por encima de cualquier otra,
+    asegurándonos de que la imagen activa siempre sea visible.
+*/
+.active {
+    display: block !important; /* display: block = el elemento se muestra ocupando su línea. */
+}
+
+
+/*
+    Le damos una altura fija al contenedor de las diapositivas.
+    "80vh" significa 80% del alto de la ventana del navegador
+    (vh = "viewport height"). Así el carrusel se adapta a la pantalla del usuario.
+*/
+.slides {
+    height: 80vh;
+}
+
+
+/*
+    Estilos que se aplican a TODAS las imágenes de la página.
+*/
+img {
+    width: 100%;            /* La imagen ocupa el 100% del ancho de su contenedor. */
+    height: 100%;           /* La imagen ocupa el 100% del alto de su contenedor. */
+    object-fit: cover;      /* Hace que la imagen "cubra" todo el espacio sin deformarse (recorta si hace falta). */
+    object-position: top;   /* Si tiene que recortar, prioriza mostrar la parte de ARRIBA de la imagen. */
+}
+
+
+/*
+    Convertimos al contenedor de la galería en una "referencia" para posicionar elementos.
+    "position: relative" no mueve al elemento, pero permite que sus hijos
+    con "position: absolute" se ubiquen RESPECTO de este contenedor
+    (y no respecto de toda la página). Esto nos sirve para colocar los botones encima.
+*/
+.galeria {
+    position: relative;
+}
+
+
+/*
+    Los botones se ponen en posición "absolute":
+    eso significa que se ubican SOBRE la galería (flotando encima),
+    según las coordenadas que les demos (top, right, etc.).
+*/
+button {
+    position: absolute
+}
+
+
+/*
+    Selector "#botonAnt" apunta al elemento con id="botonAnt"
+    (el botón de ANTERIOR, ◀️).
+    Lo posicionamos verticalmente en el medio del carrusel,
+    pegado al borde izquierdo (porque no le indicamos right ni left).
+*/
+#botonAnt {
+    top: 50%;                       /* Lo bajamos hasta la mitad del contenedor. */
+    transform: translateY(-50%);    /* Lo subimos a sí mismo la mitad de su propia altura, así queda PERFECTAMENTE centrado verticalmente. */
+}
+
+
+/*
+    Selector "#botonSig" apunta al elemento con id="botonSig"
+    (el botón de SIGUIENTE, ▶️).
+    Mismo principio que el anterior, pero pegado al borde DERECHO.
+*/
+#botonSig {
+    top: 50%;                       /* Lo bajamos hasta la mitad. */
+    right: 0;                       /* Lo pegamos al borde derecho del contenedor. */
+    transform: translateY(-50%);    /* Centrado vertical perfecto. */
+}

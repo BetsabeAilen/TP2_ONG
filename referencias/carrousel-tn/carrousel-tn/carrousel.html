@@ -1,0 +1,85 @@
+<!--
+    Este archivo es el "esqueleto" de la página web.
+    HTML significa "HyperText Markup Language" (Lenguaje de Marcado de Hipertexto).
+    Sirve para decirle al navegador QUÉ cosas mostrar en pantalla:
+    textos, imágenes, botones, etc. NO se ocupa de cómo se ven (eso es CSS)
+    ni de cómo se comportan (eso es JavaScript).
+-->
+
+<!-- Esta línea le avisa al navegador que el documento usa HTML en su versión 5 (la moderna). -->
+<!DOCTYPE html>
+
+<!-- La etiqueta <html> envuelve TODO el contenido de la página.
+     El atributo lang="en" indica que el idioma principal es inglés
+     (se podría cambiar a "es" para español). -->
+<html lang="en">
+
+<!--
+    La sección <head> ("cabeza") contiene información sobre la página
+    que NO se muestra directamente en pantalla, pero que el navegador necesita:
+    el título, la codificación de caracteres, los estilos, etc.
+-->
+<head>
+    <!-- Define el conjunto de caracteres como UTF-8.
+         Esto permite mostrar correctamente acentos, ñ, emojis, etc. -->
+    <meta charset="UTF-8">
+
+    <!-- Hace que la página se vea bien en celulares y tablets,
+         ajustando el ancho al tamaño del dispositivo. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que se muestra en la pestaña del navegador. -->
+    <title>Document</title>
+
+    <!-- Enlaza ("link") el archivo de estilos CSS llamado "styles.css".
+         Sin esto, la página no tendría colores, tamaños, ni diseño visual. -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<!--
+    La sección <body> ("cuerpo") contiene TODO lo que el usuario ve en la página:
+    textos, imágenes, botones, etc.
+-->
+<body>
+
+    <!-- <section> es un "contenedor" que agrupa elementos relacionados.
+         Le ponemos la clase "galeria" para poder darle estilos desde CSS. -->
+    <section class="galeria">
+
+        <!-- <div> es una "caja" genérica que agrupa contenido.
+             Acá adentro vamos a poner todas las imágenes del carrusel.
+             La clase "slides" (diapositivas) nos sirve para identificarla en CSS y JS. -->
+        <div class="slides">
+
+            <!-- Cada <img> es una imagen.
+                 - "src" indica de dónde se carga la imagen (su ruta).
+                 - "alt" es el texto alternativo (se muestra si no carga la imagen).
+                 - "class" sirve para aplicarle estilos o comportamiento.
+                 La primera imagen tiene la clase "active" (activa),
+                 lo que significa que es la que se ve al abrir la página. -->
+            <img src="img/img1.jpg" alt="" class="active">
+            <img src="img/img2.webp" alt="">
+            <img src="img/img3.jpg" alt="">
+
+        </div>
+
+        <!-- Botones para navegar el carrusel.
+             - "id" es un identificador ÚNICO (solo puede haber uno por página).
+             - "onclick" indica qué función de JavaScript se ejecuta al hacer clic.
+             Cuando el usuario aprieta ◀️ se llama a la función anterior(),
+             y cuando aprieta ▶️ se llama a la función siguiente(). -->
+        <button id="botonAnt" onclick="anterior()"> ◀️ </button>
+        <button id="botonSig" onclick="siguiente()"> ▶️ </button>
+
+
+    </section>
+
+    <!-- Carga el archivo de JavaScript "script.js".
+         Este archivo es el que le da "vida" al carrusel:
+         se encarga de cambiar la imagen cuando apretamos los botones.
+         Se pone al final del <body> para que primero se cargue el HTML
+         y después JavaScript pueda encontrar los elementos sin problemas. -->
+    <script src="script.js"></script>
+</body>
+
+</html>
