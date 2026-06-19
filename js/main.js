@@ -100,7 +100,7 @@ function getUbicacionSection(suffix = '') {
                 <input type="text" name="${zonaName}">
             </div>
             <div class="form-group">
-                <label>Dropdown de partidos Conurbano Bonaerense (GBA):</label>
+                <label>Partido (GBA):</label>
                 <select name="${partidoName}">
                     <option value="" disabled selected>Seleccione un partido</option>
                     <option value="Avellaneda">Avellaneda</option>
@@ -114,6 +114,7 @@ function getUbicacionSection(suffix = '') {
                     <option value="Vicente Lopez">Vicente López</option>
                     <option value="San Isidro">San Isidro</option>
                     <option value="Tigre">Tigre</option>
+                    <option value="Otro">Otro</option>
                 </select>
             </div>
         </div>`
@@ -271,10 +272,6 @@ function getModalContent(id) {
                             <label><input type="checkbox" name="dias_espacio" value="jueves"> Jueves</label>
                             <label><input type="checkbox" name="dias_espacio" value="viernes"> Viernes</label>
                             <label><input type="checkbox" name="dias_espacio" value="sabado"> Sábado</label>
-                        </div>
-                        <div class="form-group">
-                            <label>Horario disponible</label>
-                            <input type="text" name="horario_espacio" placeholder="Ej: Lunes y Miércoles de 17 a 19hs">
                         </div>`
                     )}
 
