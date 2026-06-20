@@ -1056,6 +1056,19 @@ textarea,
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history-section h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #fcac3d;
+    border-radius: 2px;
+    margin-top: 12px;
 }
 
 .history-columns {
@@ -1073,6 +1086,55 @@ textarea,
 
 .history-col p {
     margin-bottom: 20px;
+}
+
+.history-conviction {
+    margin-top: 50px;
+    padding: 40px 50px;
+    background-color: #fff5e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.history-conviction h3 {
+    color: #144061;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history-conviction h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #fcac3d;
+    border-radius: 2px;
+    margin-top: 12px;
+    margin-bottom: 25px;
+}
+
+.history-conviction p {
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.history-conviction p:last-child {
+    margin-bottom: 0;
+}
+
+.history-conviction .conviction-closing {
+    color: #144061;
+    font-weight: 700;
 }
 
 .mvv-section {
@@ -1094,6 +1156,10 @@ textarea,
     flex-direction: column;
     align-items: center;
     text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px 25px;
 }
 
 .mvv-icon {
@@ -1111,8 +1177,22 @@ textarea,
     color: #212869;
     font-size: 18px;
     font-weight: 800;
-    margin-bottom: 15px;
+    margin-bottom: 0;
     text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mvv-item h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #fcac3d;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .mvv-item p {
@@ -1133,7 +1213,7 @@ textarea,
 
 .mvv-item ul li::before {
     content: "•";
-    color: #333;
+    color: #fcac3d;
     display: inline-block;
     width: 1em;
     margin-left: -1em;
@@ -1198,6 +1278,19 @@ textarea,
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-section h2::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #fcac3d;
+    border-radius: 2px;
+    margin-top: 12px;
 }
 
 .team-grid {
@@ -1210,6 +1303,11 @@ textarea,
 .team-member {
     width: 220px;
     text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    padding-bottom: 20px;
 }
 
 .team-member img {
@@ -1219,24 +1317,30 @@ textarea,
     object-position: top;
     filter: grayscale(100%);
     margin-bottom: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px 8px 0 0;
 }
 
 .team-member h4 {
     color: #144061;
     font-size: 18px;
     margin-bottom: 5px;
+    padding: 0 12px;
 }
 
 .team-member p {
     color: #888;
     font-size: 14px;
+    padding: 0 12px;
 }
 
 @media (max-width: 768px) {
     .history-columns {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .history-conviction {
+        padding: 30px 20px;
     }
 
     .mvv-container {
