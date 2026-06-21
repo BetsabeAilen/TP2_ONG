@@ -1,3 +1,38 @@
+/* =====================================================================
+   TOKENS TIPOGRÁFICOS
+   La FAMILIA queda pendiente de elegir: solo hay que cambiar
+   --font-heading y --font-body y se actualiza toda la web.
+   ===================================================================== */
+:root {
+    /* --- Familias (sistema de 3 fuentes) --- */
+    --font-display: 'Fjalla One', 'Segoe UI', sans-serif;        /* títulos grandes / banners */
+    --font-heading: 'Josefin Sans', 'Segoe UI', sans-serif;      /* subtítulos / títulos de tarjeta */
+    --font-body: 'Noto Sans', 'Segoe UI', sans-serif;            /* cuerpo y texto general */
+
+    /* --- Escala de tamaños --- */
+    --fs-banner: 42px;       /* H1 de página (banners) */
+    --fs-hero: 32px;         /* H1 del home (carrusel) */
+    --fs-stat: 48px;         /* Números de estadística */
+    --fs-section: 28px;      /* Título de sección (H2) */
+    --fs-block: 24px;        /* Título de formulario / modal */
+    --fs-subsection: 20px;   /* Subtítulo interno (H3) */
+    --fs-card-title: 18px;   /* Título de tarjeta / columna */
+    --fs-quote: 18px;        /* Texto de cita */
+    --fs-lead: 18px;         /* Párrafo destacado / CTA */
+    --fs-body: 15px;         /* Cuerpo, párrafos, labels, botones */
+    --fs-sm: 14px;           /* Texto secundario / cuerpo de tarjeta */
+    --fs-xs: 13px;           /* Navegación, pie, metadatos */
+    --fs-micro: 12px;        /* Notas, fuentes, captions */
+
+    /* --- Pesos --- */
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extrabold: 800;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,11 +44,47 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
     background-color: #fffbf2;
     color: #333;
     line-height: 1.5;
     overflow-x: hidden;
+}
+
+/* Familia por defecto de títulos: subtítulos y títulos de tarjeta (Josefin Sans) */
+h1, h2, h3, h4, h5, h6,
+.what-pillar-title,
+.help-card-title,
+.program-cta-text,
+.form-section-title,
+.form-highlight-box__title {
+    font-family: var(--font-heading);
+}
+
+/* Títulos grandes / display (Fjalla One): banners, hero, secciones y números */
+.contact-banner h1,
+.help-banner h1,
+.hero-content h1,
+.stats-top-title,
+.stats-bottom-title,
+.about-title,
+.contact-intro h2,
+.help-content h2,
+.help-options-title,
+.history-section h2,
+.team-section h2,
+.what-intro-text h2,
+.what-programs h2,
+.program-intro h2,
+.program-impact h2,
+.program-steps h2,
+.contact-form h3,
+.modal-header h2,
+.modal-header--success h2,
+.stat h2,
+.stat-bottom h2 {
+    font-family: var(--font-display);
 }
 
 /* ===== NAVBAR ===== */
@@ -44,8 +115,8 @@ body {
 
 .logo-text {
     color: #144061;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
     letter-spacing: 1px;
     line-height: 1.1;
 }
@@ -58,8 +129,8 @@ body {
 .menu a {
     text-decoration: none;
     color: #144061;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
     letter-spacing: 0.5px;
     display: flex;
     align-items: center;
@@ -70,7 +141,7 @@ body {
     color: #144061;
     padding: 8px 20px;
     border-radius: 20px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -149,16 +220,16 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 32px;
-    font-weight: 700;
+    font-size: var(--fs-hero);
+    font-weight: var(--fw-bold);
     line-height: 1.3;
     margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 18px;
+    font-size: var(--fs-lead);
     margin-bottom: 35px;
-    font-weight: 300;
+    font-weight: var(--fw-light);
 }
 
 .hero-dots {
@@ -191,8 +262,8 @@ body {
     background-color: #c2ebff;
     color: #144061;
     border-radius: 30px;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
     font-family: inherit;
     text-decoration: none;
     border: none;
@@ -253,8 +324,8 @@ body {
 
 .stats-top-title {
     color: #fff;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
@@ -275,8 +346,8 @@ body {
 
 .stats-top-subtitle {
     color: #fff;
-    font-size: 15px;
-    font-weight: 400;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
     text-align: center;
     margin-top: 18px;
     line-height: 1.6;
@@ -308,15 +379,15 @@ body {
 }
 
 .stats-top .stat h2 {
-    font-size: 42px;
-    font-weight: 700;
+    font-size: var(--fs-stat);
+    font-weight: var(--fw-bold);
     color: #fff;
     margin-bottom: 10px;
 }
 
 .stats-top .stat p {
-    font-size: 13px;
-    font-weight: 400;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-regular);
     color: #fff;
     line-height: 1.45;
 }
@@ -324,7 +395,7 @@ body {
 .stats-top-source {
     text-align: center;
     color: rgba(255, 255, 255, 0.65);
-    font-size: 11px;
+    font-size: var(--fs-micro);
     margin-top: 20px;
     line-height: 1.5;
 }
@@ -342,8 +413,8 @@ body {
 
 .stats-bottom-title {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 0.5px;
@@ -364,8 +435,8 @@ body {
 
 .stats-bottom-subtitle {
     color: #144061;
-    font-size: 15px;
-    font-weight: 400;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-regular);
     text-align: center;
     margin-top: 18px;
     line-height: 1.6;
@@ -397,16 +468,16 @@ body {
 }
 
 .stats-bottom .stat-bottom h2 {
-    font-size: 48px;
-    font-weight: 700;
+    font-size: var(--fs-stat);
+    font-weight: var(--fw-bold);
     color: #fcac3d;
     margin-bottom: 10px;
     text-shadow: 0 2px 8px rgba(252, 172, 61, 0.45), 0 1px 3px rgba(20, 64, 97, 0.15);
 }
 
 .stats-bottom .stat-bottom p {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
     color: #144061;
     line-height: 1.45;
 }
@@ -414,7 +485,7 @@ body {
 .stats-bottom-footer {
     text-align: center;
     color: #144061;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     margin-top: 25px;
     line-height: 1.5;
 }
@@ -430,8 +501,8 @@ body {
 }
 
 .stat h2, .stat-bottom h2 {
-    font-size: 56px;
-    font-weight: 700;
+    font-size: var(--fs-stat);
+    font-weight: var(--fw-bold);
     margin-bottom: 10px;
 }
 
@@ -444,17 +515,17 @@ body {
 }
 
 .stat p, .stat-bottom p {
-    font-size: 14px;
+    font-size: var(--fs-sm);
 }
 
 .stat p {
-    font-weight: 300;
+    font-weight: var(--fw-light);
     color: #fff;
 }
 
 .stat-bottom p {
     color: #144061;
-    font-weight: 500;
+    font-weight: var(--fw-medium);
 }
 
 /* ===== ABOUT (crema) ===== */
@@ -466,8 +537,8 @@ body {
 .about-title {
     text-align: center;
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     margin-bottom: 40px;
     padding: 0 60px;
     display: flex;
@@ -510,7 +581,7 @@ body {
 
 .about-text {
     flex: 1;
-    font-size: 13px;
+    font-size: var(--fs-body);
     color: #333;
     text-align: left;
     line-height: 1.65;
@@ -526,7 +597,7 @@ body {
 
 .about-text strong {
     color: #144061;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }
 
 /* ===== CARDS ===== */
@@ -548,8 +619,8 @@ body {
 
 .card h3 {
     color: #144061;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
     letter-spacing: 1px;
     margin-bottom: 15px;
 }
@@ -574,8 +645,8 @@ body {
     background-color: rgba(252, 172, 61, 0.9);
     color: #fff;
     padding: 8px 14px;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: var(--fs-micro);
+    font-weight: var(--fw-semibold);
     text-align: center;
     border-radius: 4px;
     width: 75%;
@@ -796,8 +867,8 @@ body {
 
 .contact-banner h1 {
     color: #fff;
-    font-size: 42px;
-    font-weight: 800;
+    font-size: var(--fs-banner);
+    font-weight: var(--fw-extrabold);
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -813,8 +884,8 @@ body {
 
 .contact-intro h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -832,7 +903,7 @@ body {
 }
 
 .contact-intro p {
-    font-size: 16px;
+    font-size: var(--fs-body);
     line-height: 1.6;
 }
 
@@ -852,11 +923,13 @@ body {
 .contact-info h4,
 .collab-title {
     color: #144061;
+    font-size: var(--fs-subsection);
+    font-weight: var(--fw-bold);
     margin-bottom: 14px;
 }
 
 .contact-form h3 {
-    font-size: 24px;
+    font-size: var(--fs-block);
     margin-bottom: 18px;
 }
 
@@ -874,9 +947,9 @@ body {
 }
 
 .form-group label {
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     color: #144061;
-    font-size: 15px;
+    font-size: var(--fs-body);
 }
 
 .form-group input[type="text"],
@@ -895,7 +968,7 @@ textarea {
     border-radius: 12px;
     background: #fbfcfe;
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     font-family: inherit;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
@@ -972,8 +1045,8 @@ textarea,
 
 .help-banner h1 {
     color: #144061;
-    font-size: 42px;
-    font-weight: 800;
+    font-size: var(--fs-banner);
+    font-weight: var(--fw-extrabold);
     text-transform: uppercase;
 }
 
@@ -987,10 +1060,10 @@ textarea,
 .help-content h2,
 .help-options-title {
     color: #144061;
-    font-size: 28px;
+    font-size: var(--fs-section);
     text-align: center;
     margin-bottom: 30px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1008,7 +1081,7 @@ textarea,
 }
 
 .help-text {
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.8;
     margin-bottom: 40px;
     text-align: left;
@@ -1020,7 +1093,7 @@ textarea,
 }
 
 .help-text strong {
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     color: #144061;
 }
 
@@ -1132,8 +1205,8 @@ textarea,
 
 .help-card-title {
     color: #fff;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     text-align: center;
     display: block;
     line-height: 1.2;
@@ -1147,7 +1220,7 @@ textarea,
 }
 
 .help-card-desc {
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #444;
     line-height: 1.6;
     display: block;
@@ -1174,8 +1247,8 @@ textarea,
 
 .help-footer-banner p {
     color: #144061;
-    font-size: 15px;
-    font-weight: 700;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
     margin: 0;
     line-height: 1.5;
 }
@@ -1247,15 +1320,15 @@ textarea,
 
 .modal-header h2 {
     color: #fff;
-    font-size: 24px;
-    font-weight: 800;
+    font-size: var(--fs-block);
+    font-weight: var(--fw-extrabold);
     margin-bottom: 12px;
     text-transform: uppercase;
 }
 
 .modal-header p {
     color: #fff;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.5;
 }
 
@@ -1266,12 +1339,12 @@ textarea,
 
 .modal-header--success h2 {
     text-transform: none;
-    font-size: 26px;
+    font-size: var(--fs-block);
     margin-bottom: 20px;
 }
 
 .modal-header--success p {
-    font-size: 16px;
+    font-size: var(--fs-body);
     line-height: 1.7;
     max-width: 540px;
     margin-left: auto;
@@ -1287,7 +1360,7 @@ textarea,
 
 .modal-success-footer p {
     color: #333;
-    font-size: 16px;
+    font-size: var(--fs-body);
     line-height: 1.7;
     max-width: 540px;
     margin: 0 auto;
@@ -1326,8 +1399,8 @@ textarea,
     align-items: center;
     gap: 10px;
     color: #144061;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     margin-bottom: 15px;
 }
 
@@ -1347,8 +1420,8 @@ textarea,
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-sm);
     color: #333;
     cursor: pointer;
 }
@@ -1372,15 +1445,15 @@ textarea,
 }
 
 .form-label-optional {
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     color: #144061;
-    font-size: 15px;
+    font-size: var(--fs-body);
     font-style: italic;
 }
 
 .form-note {
     color: #555;
-    font-size: 13px;
+    font-size: var(--fs-xs);
     line-height: 1.6;
     margin: 0;
     font-style: italic;
@@ -1399,8 +1472,8 @@ textarea,
 
 .form-highlight-box__title {
     color: #144061;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     margin-bottom: 10px;
 }
 
@@ -1410,9 +1483,9 @@ textarea,
 
 .form-highlight-box__text {
     color: #144061;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.6;
-    font-weight: 600;
+    font-weight: var(--fw-semibold);
     margin-bottom: 12px;
 }
 
@@ -1429,8 +1502,8 @@ textarea,
     color: #144061;
     padding: 10px 18px;
     border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
     font-family: inherit;
@@ -1446,7 +1519,7 @@ textarea,
 }
 
 .form-section--lead .form-section-title {
-    font-size: 20px;
+    font-size: var(--fs-subsection);
     margin-bottom: 0;
 }
 
@@ -1466,14 +1539,14 @@ textarea,
 /* ===== MODAL DONACIÓN ===== */
 .donacion-intro {
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.7;
     margin-bottom: 20px;
 }
 
 .donacion-elegir {
     color: #144061;
-    font-size: 16px;
+    font-size: var(--fs-body);
     margin-bottom: 6px;
 }
 
@@ -1487,7 +1560,7 @@ textarea,
 .donacion-tab {
     flex: 1 1 140px;
     padding: 12px 14px;
-    font-size: 13px;
+    font-size: var(--fs-xs);
     text-align: center;
     line-height: 1.35;
 }
@@ -1560,7 +1633,7 @@ textarea,
 }
 
 .site-footer-mission {
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.75;
     color: rgba(255, 255, 255, 0.92);
     margin-top: 14px;
@@ -1571,8 +1644,8 @@ textarea,
 }
 
 .site-footer-brand-name {
-    font-size: 13px;
-    font-weight: 700;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
     letter-spacing: 2px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.85);
@@ -1584,8 +1657,8 @@ textarea,
 }
 
 .site-footer-heading {
-    font-size: 18px;
-    font-weight: 800;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-extrabold);
     color: #fff;
     margin-bottom: 10px;
 }
@@ -1614,7 +1687,7 @@ textarea,
     gap: 8px;
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     transition: color 0.2s ease;
 }
 
@@ -1625,7 +1698,7 @@ textarea,
 
 .site-footer-chevron {
     color: #fcac3d;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     font-size: 16px;
     line-height: 1;
 }
@@ -1662,7 +1735,7 @@ textarea,
     padding: 18px 48px;
     background-color: #fffbf2;
     color: #144061;
-    font-size: 13px;
+    font-size: var(--fs-xs);
     border-top: 3px solid #fcac3d;
 }
 
@@ -1676,7 +1749,7 @@ textarea,
 
 .site-footer-tagline strong {
     color: #fcac3d;
-    font-weight: 800;
+    font-weight: var(--fw-extrabold);
 }
 
 @media (max-width: 992px) {
@@ -1742,7 +1815,7 @@ textarea,
 }
 
 .contact-footer-title {
-    font-size: 20px;
+    font-size: var(--fs-subsection);
     margin-bottom: 12px;
 }
 
@@ -1753,7 +1826,7 @@ textarea,
 .contact-footer-link {
     color: #fcac3d;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }
 
 .contact-footer-subtext {
@@ -1782,7 +1855,7 @@ textarea,
 }
 
 .map-footer-text {
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #333;
     line-height: 1.6;
     text-align: left;
@@ -1902,8 +1975,8 @@ textarea,
 
 .history-section h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
@@ -1925,7 +1998,7 @@ textarea,
     gap: 50px;
     text-align: justify;
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.8;
 }
 
@@ -1939,7 +2012,7 @@ textarea,
 
 .history-col strong {
     color: #144061;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }
 
 .history-conviction {
@@ -1950,14 +2023,14 @@ textarea,
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.8;
 }
 
 .history-conviction h3 {
     color: #144061;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: var(--fs-subsection);
+    font-weight: var(--fw-bold);
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -1988,7 +2061,7 @@ textarea,
 
 .history-conviction .conviction-closing {
     color: #144061;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }
 
 .mvv-section {
@@ -2029,8 +2102,8 @@ textarea,
 
 .mvv-item h3 {
     color: #212869;
-    font-size: 18px;
-    font-weight: 800;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-extrabold);
     margin-bottom: 0;
     text-transform: uppercase;
     display: flex;
@@ -2050,7 +2123,7 @@ textarea,
 }
 
 .mvv-item p {
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #444;
     line-height: 1.6;
 }
@@ -2060,7 +2133,7 @@ textarea,
     padding: 0;
     margin: 0;
     text-align: left;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #444;
     line-height: 1.6;
 }
@@ -2103,9 +2176,9 @@ textarea,
 }
 
 .quote-text {
-    font-size: 20px;
+    font-size: var(--fs-quote);
     color: #144061;
-    font-weight: 600;
+    font-weight: var(--fw-semibold);
     font-style: italic;
     line-height: 1.6;
     margin: 0;
@@ -2113,11 +2186,11 @@ textarea,
 }
 
 .quote-author {
-    font-size: 16px;
+    font-size: var(--fs-sm);
     color: #144061;
     text-align: right;
     margin: 0;
-    font-weight: 800;
+    font-weight: var(--fw-extrabold);
 }
 
 .team-section {
@@ -2129,8 +2202,8 @@ textarea,
 
 .team-section h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
@@ -2176,14 +2249,14 @@ textarea,
 
 .team-member h4 {
     color: #144061;
-    font-size: 18px;
+    font-size: var(--fs-card-title);
     margin-bottom: 5px;
     padding: 0 12px;
 }
 
 .team-member p {
     color: #888;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     padding: 0 12px;
 }
 
@@ -2206,8 +2279,8 @@ textarea,
 
 .what-intro-text h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     margin-bottom: 25px;
     text-align: left;
     display: flex;
@@ -2227,7 +2300,7 @@ textarea,
 
 .what-intro-text p {
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.8;
     margin-bottom: 18px;
     text-align: left;
@@ -2295,14 +2368,14 @@ textarea,
 .what-pillar h3,
 .what-pillar-title {
     color: #144061;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     margin-bottom: 8px;
     text-align: left;
 }
 
 .what-pillar-content p:not(.what-pillar-title) {
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #144061;
     line-height: 1.5;
     margin: 0;
@@ -2341,8 +2414,8 @@ textarea,
 
 .what-programs h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     text-transform: uppercase;
     margin-bottom: 40px;
     text-align: center;
@@ -2397,22 +2470,22 @@ textarea,
 
 .program-card-content h3 {
     color: #144061;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     margin-bottom: 12px;
 }
 
 .program-card-content p {
     color: #444;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.6;
     margin: 0 0 10px;
 }
 
 .program-card-link {
     color: #fcac3d;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
     text-decoration: none;
     margin-top: 14px;
     display: inline-block;
@@ -2497,13 +2570,13 @@ textarea,
     max-width: 1100px;
     margin: 0 auto;
     padding: 25px 60px 0;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     color: #144061;
 }
 
 .program-breadcrumb a {
     color: #fcac3d;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     text-decoration: none;
 }
 
@@ -2519,8 +2592,8 @@ textarea,
 
 .program-intro h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     margin-bottom: 20px;
     line-height: 1.35;
 }
@@ -2537,7 +2610,7 @@ textarea,
 
 .program-intro p {
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.8;
     margin-bottom: 14px;
 }
@@ -2548,7 +2621,7 @@ textarea,
 
 .program-intro strong {
     color: #144061;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }
 
 .program-intro--with-image {
@@ -2623,8 +2696,8 @@ textarea,
 
 .program-about-text h3 {
     color: #144061;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: var(--fs-subsection);
+    font-weight: var(--fw-bold);
     margin-bottom: 12px;
 }
 
@@ -2634,7 +2707,7 @@ textarea,
 
 .program-about-text p {
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.8;
     margin-bottom: 14px;
 }
@@ -2661,8 +2734,8 @@ textarea,
 
 .program-proposal-list h3 {
     color: #144061;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: var(--fs-subsection);
+    font-weight: var(--fw-bold);
     margin-bottom: 20px;
 }
 
@@ -2677,14 +2750,14 @@ textarea,
     align-items: flex-start;
     gap: 14px;
     color: #333;
-    font-size: 15px;
+    font-size: var(--fs-body);
     line-height: 1.6;
     margin-bottom: 16px;
 }
 
 .program-proposal-list li strong {
     color: #144061;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
 }
 
 .program-check {
@@ -2697,8 +2770,8 @@ textarea,
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
     margin-top: 2px;
 }
 
@@ -2733,17 +2806,17 @@ textarea,
 
 .program-quote-text {
     color: #144061;
-    font-size: 16px;
+    font-size: var(--fs-quote);
     font-style: italic;
-    font-weight: 600;
+    font-weight: var(--fw-semibold);
     line-height: 1.7;
     margin: 0;
 }
 
 .program-quote-author {
     color: #144061;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
     font-style: normal;
     margin: 0;
     text-align: right;
@@ -2760,8 +2833,8 @@ textarea,
 
 .program-impact h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     text-align: center;
     margin-bottom: 35px;
     display: flex;
@@ -2802,20 +2875,20 @@ textarea,
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     margin-bottom: 14px;
 }
 
 .program-impact-card h3 {
     color: #144061;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     margin-bottom: 10px;
 }
 
 .program-impact-card p {
     color: #444;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.6;
     margin: 0;
 }
@@ -2833,8 +2906,8 @@ textarea,
 
 .program-cta-text {
     color: #144061;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-bold);
     margin-bottom: 24px;
 }
 
@@ -2873,8 +2946,8 @@ textarea,
 
 .program-steps h2 {
     color: #144061;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: var(--fs-section);
+    font-weight: var(--fw-bold);
     text-align: center;
     margin-bottom: 35px;
     display: flex;
@@ -2922,20 +2995,20 @@ textarea,
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: var(--fw-bold);
     margin: 0 auto 14px;
 }
 
 .program-step-card h3 {
     color: #144061;
-    font-size: 17px;
-    font-weight: 700;
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-bold);
     margin-bottom: 10px;
 }
 
 .program-step-card p {
     color: #444;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     line-height: 1.6;
     margin: 0;
 }
