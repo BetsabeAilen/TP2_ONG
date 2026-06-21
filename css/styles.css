@@ -155,6 +155,10 @@ h1, h2, h3, h4, h5, h6,
     color: #fcac3d;
 }
 
+.menu a:not(.btn-nav-orange)[aria-current="page"] {
+    color: #fcac3d;
+}
+
 .menu-toggle {
     display: none;
     background: none;
@@ -257,8 +261,10 @@ h1, h2, h3, h4, h5, h6,
     background-color: #fcac3d;
 }
 
-/* ===== BOTONES COMUNES ===== */
-.btn-voluntario, .btn-send, .btn-submit {
+/* ===== BOTONES COMUNES (celeste → naranja) ===== */
+.btn-voluntario,
+.btn-send,
+.btn-submit {
     background-color: #c2ebff;
     color: #144061;
     border-radius: 30px;
@@ -268,40 +274,27 @@ h1, h2, h3, h4, h5, h6,
     text-decoration: none;
     border: none;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    box-shadow: 0 8px 18px rgba(20, 64, 97, 0.14);
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-voluntario:hover, .btn-send:hover, .btn-submit:hover {
+.btn-voluntario:hover,
+.btn-send:hover,
+.btn-submit:hover {
     background-color: #fcac3d;
     color: #144061;
-}
-
-.btn-voluntario {
-    display: inline-block;
-    padding: 14px 32px;
-}
-
-.btn-send, .btn-submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 26px;
-    box-shadow: 0 8px 18px rgba(20, 64, 97, 0.14);
-}
-
-.btn-send {
-    display: inline-flex;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(20, 64, 97, 0.18);
 }
 
 .btn-submit {
     width: 100%;
     max-width: 250px;
     margin: 30px auto 0;
-}
-
-.btn-send:hover, .btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 20px rgba(20, 64, 97, 0.18);
 }
 
 /* ===== STATS COMUNES ===== */
@@ -491,7 +484,10 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .stats-bottom-heart {
-    color: #fcac3d;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 4px;
 }
 
 .stat, .stat-bottom {
@@ -1703,12 +1699,6 @@ textarea,
     line-height: 1;
 }
 
-.site-footer-social li + li {
-    padding-top: 10px;
-    border-top: 1px dashed rgba(255, 255, 255, 0.18);
-    margin-top: 2px;
-}
-
 .site-footer-social-icon {
     display: inline-flex;
     align-items: center;
@@ -1752,7 +1742,7 @@ textarea,
     font-weight: var(--fw-extrabold);
 }
 
-@media (max-width: 992px) {
+@media (min-width: 600px) and (max-width: 992px) {
     .site-footer-main {
         padding: 44px 28px 36px;
     }
@@ -1804,33 +1794,6 @@ textarea,
         align-items: flex-start;
         padding: 16px 20px;
     }
-}
-
-/* Legacy footer (fallback si JS no carga) */
-.contact-footer-content {
-    padding: 40px 60px;
-    background-color: #144061;
-    color: #fff;
-    text-align: center;
-}
-
-.contact-footer-title {
-    font-size: var(--fs-subsection);
-    margin-bottom: 12px;
-}
-
-.contact-footer-text {
-    margin-bottom: 8px;
-}
-
-.contact-footer-link {
-    color: #fcac3d;
-    text-decoration: none;
-    font-weight: var(--fw-bold);
-}
-
-.contact-footer-subtext {
-    opacity: 0.9;
 }
 
 /* ===== MAPA ===== */
@@ -2496,7 +2459,72 @@ textarea,
     color: #e59a35;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+    .history-columns {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .history-conviction {
+        padding: 30px 20px;
+    }
+
+    .mvv-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .quote-container {
+        gap: 24px;
+    }
+
+    .quote-img {
+        height: 40px;
+    }
+
+    .what-intro-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .what-intro-image {
+        max-width: 100%;
+    }
+
+    .what-intro-image img {
+        height: 260px;
+    }
+
+    .what-pillars-container {
+        flex-direction: column;
+    }
+
+    .what-pillar {
+        gap: 16px;
+        padding: 20px 18px;
+    }
+
+    .what-pillar-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .program-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .program-card-image {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 992px) {
     .history-columns {
         flex-direction: column;
         gap: 20px;
@@ -2922,11 +2950,14 @@ textarea,
     background-color: transparent;
     border: 2px solid #144061;
     color: #144061;
+    box-shadow: none;
 }
 
 .btn-outline:hover {
     background-color: #144061;
     color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(20, 64, 97, 0.18);
 }
 
 /* ===== PROGRAMA HERRAMIENTAS PARA CREAR ===== */
@@ -3020,7 +3051,77 @@ textarea,
     display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+    .program-breadcrumb,
+    .program-intro,
+    .program-about,
+    .program-proposal,
+    .program-impact,
+    .program-steps,
+    .program-cta {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .program-intro h2 {
+        font-size: 22px;
+    }
+
+    .program-about-container,
+    .program-intro-container,
+    .program-proposal-container,
+    .program-impact-grid,
+    .program-steps-grid {
+        flex-direction: column;
+    }
+
+    .program-intro-text,
+    .program-intro-image {
+        flex: 1 1 100%;
+    }
+
+    .program-intro-image img {
+        min-height: 260px;
+    }
+
+    .program-step-image img {
+        height: 180px;
+    }
+
+    .program-about-container--reverse {
+        flex-direction: column;
+    }
+
+    .program-proposal-container {
+        align-items: stretch;
+    }
+
+    .program-quote {
+        align-self: stretch;
+    }
+
+    .program-about-image,
+    .program-about-text {
+        flex: 1 1 100%;
+    }
+
+    .program-about-image img {
+        min-height: 260px;
+    }
+
+    .program-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-cta-buttons .btn-voluntario {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 992px) {
     .program-breadcrumb,
     .program-intro,
     .program-about,

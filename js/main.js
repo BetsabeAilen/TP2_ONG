@@ -1,8 +1,35 @@
-/* ===== FLEXNAV MENU ===== */
-function abrirMenu() {
-    let menu = document.querySelector('.menu');
-    menu.classList.toggle('flexNav');
-}
+/* ===== EVENTOS DE UI (delegación) ===== */
+document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.menu-toggle');
+    if (toggle) {
+        const menu = document.querySelector('.menu');
+        if (menu) {
+            const abierto = menu.classList.toggle('flexNav');
+            toggle.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+        }
+        return;
+    }
+
+    const dot = e.target.closest('.hero-dots .dot');
+    if (dot && dot.dataset.slide) {
+        currentSlide(Number(dot.dataset.slide));
+        return;
+    }
+
+    const modalTrigger = e.target.closest('[data-modal]');
+    if (modalTrigger) {
+        openModal(modalTrigger.dataset.modal);
+    }
+});
+
+/* ===== IMÁGENES CON FALLBACK ===== */
+document.addEventListener('error', (e) => {
+    const img = e.target;
+    if (img.tagName === 'IMG' && img.dataset.fallback && !img.dataset.fallbackApplied) {
+        img.dataset.fallbackApplied = 'true';
+        img.src = img.dataset.fallback;
+    }
+}, true);
 
 /* ===== CARROUSEL HERO ===== */
 let posicion = 0;
@@ -109,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetSlideInterval();
     }
 
+    initSiteHeader();
     initSiteFooter();
 });
 
@@ -140,6 +168,60 @@ function pageUrl(key) {
 
 function assetUrl(path) {
     return getRootPath() + path;
+}
+
+/* ===== HEADER GLOBAL ===== */
+function getCurrentPageKey() {
+    const path = window.location.pathname.replace(/\\/g, '/');
+    let bestKey = null;
+    let bestLen = -1;
+
+    for (const [key, rel] of Object.entries(SITE_PAGES)) {
+        if (path.endsWith('/' + rel) || path.endsWith(rel)) {
+            if (rel.length > bestLen) {
+                bestKey = key;
+                bestLen = rel.length;
+            }
+        }
+    }
+
+    if (!bestKey && (path === '' || path.endsWith('/'))) {
+        bestKey = 'index';
+    }
+
+    return bestKey;
+}
+
+function getSiteHeaderHTML() {
+    const current = getCurrentPageKey();
+
+    const navLink = (key, label, extraClass = '') => {
+        const classAttr = extraClass ? ` class="${extraClass}"` : '';
+        const activeAttr = key === current ? ' aria-current="page"' : '';
+        return `<a href="${pageUrl(key)}"${classAttr}${activeAttr}>${label}</a>`;
+    };
+
+    return `
+        <a href="${pageUrl('index')}" class="logo">
+            <img src="${assetUrl('Img/logo.png')}" alt="Cuadernos Llenos">
+            <span class="logo-text">CUADERNOS<br>LLENOS</span>
+        </a>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        <nav class="menu">
+            ${navLink('quienesSomos', 'QUIÉNES SOMOS')}
+            ${navLink('queHacemos', 'QUÉ HACEMOS')}
+            ${navLink('mapa', 'PUNTOS DE ENCUENTRO')}
+            ${navLink('contacto', 'CONTACTO')}
+            ${navLink('quieroAyudar', 'QUIERO AYUDAR', 'btn-nav-orange')}
+        </nav>
+    `;
+}
+
+function initSiteHeader() {
+    const header = document.querySelector('header.navbar');
+    if (header && header.children.length === 0) {
+        header.innerHTML = getSiteHeaderHTML();
+    }
 }
 
 function getSiteFooterHTML() {

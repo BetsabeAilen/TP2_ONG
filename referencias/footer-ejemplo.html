@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        footer {
+            display: flex;
+            width: 90%;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            width: 30%;
+            height: 20vh;
+            border: 1px solid black;
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                flex-direction: column;
+            }
+
+            .footer-column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <footer>
+        <div class="footer-column">
+            <ul>
+                <li>Link 1</li>
+                <li>Link 2</li>
+                <li>Link 3</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <p>Hecho por...</p>
+            <a href="#">Volver arriba</a>
+        </div>
+        <div class="footer-column">
+            <input type="email" placeholder="Ingresar e-mail"><br>
+            <button>Subscribirse</button>
+        </div>
+    </footer>
+
+</body>
+
+</html>

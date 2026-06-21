@@ -11,20 +11,7 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <a href="index.html" class="logo">
-            <img src="Img/logo.png" alt="Cuadernos Llenos">
-            <span class="logo-text">CUADERNOS<br>LLENOS</span>
-        </a>
-        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
-        <nav class="menu">
-            <a href="pages/quienes-somos.html">QUIÉNES SOMOS</a>
-            <a href="pages/que-hacemos.html">QUÉ HACEMOS</a>
-            <a href="pages/mapa.html">PUNTOS DE ENCUENTRO</a>
-            <a href="pages/contacto.html">CONTACTO</a>
-            <a href="pages/quiero-ayudar.html" class="btn-nav-orange">QUIERO AYUDAR</a>
-        </nav>
-    </header>
+    <header class="navbar"></header>
 
     <section class="hero galeria">
         <div class="slides">
@@ -43,14 +30,14 @@
         </div>
 
         <div class="hero-dots" aria-label="Navegación del carrusel">
-            <span class="dot active" onclick="currentSlide(1)" role="button" tabindex="0" aria-label="Imagen 1"></span>
-            <span class="dot" onclick="currentSlide(2)" role="button" tabindex="0" aria-label="Imagen 2"></span>
-            <span class="dot" onclick="currentSlide(3)" role="button" tabindex="0" aria-label="Imagen 3"></span>
-            <span class="dot" onclick="currentSlide(4)" role="button" tabindex="0" aria-label="Imagen 4"></span>
+            <span class="dot active" data-slide="1" role="button" tabindex="0" aria-label="Imagen 1"></span>
+            <span class="dot" data-slide="2" role="button" tabindex="0" aria-label="Imagen 2"></span>
+            <span class="dot" data-slide="3" role="button" tabindex="0" aria-label="Imagen 3"></span>
+            <span class="dot" data-slide="4" role="button" tabindex="0" aria-label="Imagen 4"></span>
         </div>
     </section>
 
-    <section class="stats-top" id="quiero-ayudar">
+    <section class="stats-top">
         <div class="stats-top-card">
             <header class="stats-top-header">
                 <h2 class="stats-top-title">LA REALIDAD QUE NOS INTERPELA</h2>
@@ -99,7 +86,7 @@
         </div>
     </section>
 
-    <section class="about" id="quienes-somos">
+    <section class="about">
         <h2 class="about-title">Un futuro mejor también se construye acompañando</h2>
 
         <div class="about-content">
@@ -114,7 +101,7 @@
             </div>
         </div>
 
-        <div class="what-pillars" id="que-hacemos">
+        <div class="what-pillars">
             <div class="what-pillars-container">
                 <article class="what-pillar">
                     <div class="what-pillar-icon">
@@ -149,7 +136,7 @@
         </div>
     </section>
 
-    <section class="stats-bottom" id="puntos-encuentro">
+    <section class="stats-bottom">
         <div class="stats-bottom-inner">
             <header class="stats-bottom-header">
                 <h2 class="stats-bottom-title">EL IMPACTO QUE CONSTRUIMOS JUNTOS</h2>
@@ -187,17 +174,9 @@
                 </div>
             </div>
 
-            <p class="stats-bottom-footer">Cada número representa una oportunidad sostenida por la comunidad. <span class="stats-bottom-heart" aria-hidden="true">♥</span></p>
+            <p class="stats-bottom-footer">Cada número representa una oportunidad sostenida por la comunidad. <span class="stats-bottom-heart" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="#fcac3d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></p>
         </div>
     </section>
-
-    <footer id="contacto" class="contact">
-        <div class="contact-footer-content">
-            <h3 class="contact-footer-title">Contacto</h3>
-            <p class="contact-footer-text">Escribinos a <a href="mailto:info@cuadernosllenos.org" class="contact-footer-link">info@cuadernosllenos.org</a></p>
-            <p class="contact-footer-subtext">También podés encontrarnos en nuestras redes sociales.</p>
-        </div>
-    </footer>
 
     <script src="js/main.js" defer></script>
 

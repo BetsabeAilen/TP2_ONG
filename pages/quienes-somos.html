@@ -11,20 +11,7 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <a href="../index.html" class="logo">
-            <img src="../Img/logo.png" alt="Cuadernos Llenos">
-            <span class="logo-text">CUADERNOS<br>LLENOS</span>
-        </a>
-        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
-        <nav class="menu">
-            <a href="quienes-somos.html">QUIÉNES SOMOS</a>
-            <a href="que-hacemos.html">QUÉ HACEMOS</a>
-            <a href="mapa.html">PUNTOS DE ENCUENTRO</a>
-            <a href="contacto.html">CONTACTO</a>
-            <a href="quiero-ayudar.html" class="btn-nav-orange">QUIERO AYUDAR</a>
-        </nav>
-    </header>
+    <header class="navbar"></header>
 
     <main class="about-main">
         <div class="contact-banner">
@@ -103,17 +90,17 @@
             <h2>NUESTRO EQUIPO</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="../Img/equipo-rosa-alvarez.jpg" alt="Rosa Alvarez" onerror="this.src='../Img/fallback-estudiante.jpg'">
+                    <img src="../Img/equipo-rosa-alvarez.jpg" alt="Rosa Alvarez" data-fallback="../Img/fallback-estudiante.jpg">
                     <h4>Rosa Alvarez</h4>
                     <p>Fundadora y Directora General</p>
                 </div>
                 <div class="team-member">
-                    <img src="../Img/equipo-evangelina-pati.jpg" alt="Evangelina Pati" onerror="this.src='../Img/fallback-estudiante.jpg'">
+                    <img src="../Img/equipo-evangelina-pati.jpg" alt="Evangelina Pati" data-fallback="../Img/fallback-estudiante.jpg">
                     <h4>Evangelina Pati</h4>
                     <p>Coordinadora Operativa</p>
                 </div>
                 <div class="team-member">
-                    <img src="../Img/equipo-mariano-acosta.jpg" alt="Mariano Acosta" onerror="this.src='../Img/fallback-estudiante.jpg'">
+                    <img src="../Img/equipo-mariano-acosta.jpg" alt="Mariano Acosta" data-fallback="../Img/fallback-estudiante.jpg">
                     <h4>Mariano Acosta</h4>
                     <p>Coordinador Pedagógico</p>
                 </div>
@@ -145,14 +132,6 @@
             </div>
         </section>
     </main>
-
-    <footer id="contacto" class="contact">
-        <div class="contact-footer-content">
-            <h3 class="contact-footer-title">Contacto</h3>
-            <p class="contact-footer-text">Escribinos a <a href="mailto:info@cuadernosllenos.org" class="contact-footer-link">info@cuadernosllenos.org</a></p>
-            <p class="contact-footer-subtext">También podés encontrarnos en nuestras redes sociales.</p>
-        </div>
-    </footer>
 
     <script src="../js/main.js" defer></script>
 

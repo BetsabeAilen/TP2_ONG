@@ -11,20 +11,7 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <a href="../index.html" class="logo">
-            <img src="../Img/logo.png" alt="Cuadernos Llenos">
-            <span class="logo-text">CUADERNOS<br>LLENOS</span>
-        </a>
-        <button class="menu-toggle" onclick="abrirMenu()">☰</button>
-        <nav class="menu">
-            <a href="quienes-somos.html">QUIÉNES SOMOS</a>
-            <a href="que-hacemos.html">QUÉ HACEMOS</a>
-            <a href="mapa.html">PUNTOS DE ENCUENTRO</a>
-            <a href="contacto.html">CONTACTO</a>
-            <a href="quiero-ayudar.html" class="btn-nav-orange">QUIERO AYUDAR</a>
-        </nav>
-    </header>
+    <header class="navbar"></header>
 
     <main class="help-main">
         <div class="help-banner">
@@ -83,9 +70,9 @@
             <h2 class="help-options-title">Elegí cómo querés colaborar.</h2>
 
             <div class="help-cards">
-                <button type="button" class="help-card" onclick="openModal('modal-voluntario')">
+                <button type="button" class="help-card" data-modal="modal-voluntario">
                     <span class="help-card-image">
-                        <img src="../Img/quiero-ayudar-voluntario.jpg" alt="Ser voluntario/a" onerror="this.src='../Img/fallback-estudiante.jpg'">
+                        <img src="../Img/quiero-ayudar-voluntario.jpg" alt="Ser voluntario/a" data-fallback="../Img/fallback-estudiante.jpg">
                         <span class="help-card-overlay">
                             <span class="help-card-title">Ser voluntario/a</span>
                         </span>
@@ -95,9 +82,9 @@
                     </span>
                 </button>
 
-                <button type="button" class="help-card" onclick="openModal('modal-espacio')">
+                <button type="button" class="help-card" data-modal="modal-espacio">
                     <span class="help-card-image">
-                        <img src="../Img/quiero-ayudar-espacio.jpg" alt="Ofrecer un espacio" onerror="this.src='../Img/fallback-estudiante.jpg'">
+                        <img src="../Img/quiero-ayudar-espacio.jpg" alt="Ofrecer un espacio" data-fallback="../Img/fallback-estudiante.jpg">
                         <span class="help-card-overlay">
                             <span class="help-card-title">Ofrecer un espacio</span>
                         </span>
@@ -107,9 +94,9 @@
                     </span>
                 </button>
 
-                <button type="button" class="help-card" onclick="openModal('modal-donacion')">
+                <button type="button" class="help-card" data-modal="modal-donacion">
                     <span class="help-card-image">
-                        <img src="../Img/quiero-ayudar-donacion.jpg" alt="Hacer una donación" onerror="this.src='../Img/fallback-estudiante.jpg'">
+                        <img src="../Img/quiero-ayudar-donacion.jpg" alt="Hacer una donación" data-fallback="../Img/fallback-estudiante.jpg">
                         <span class="help-card-overlay">
                             <span class="help-card-title">Hacer una donación</span>
                         </span>
@@ -128,14 +115,6 @@
             </div>
         </section>
     </main>
-
-    <footer id="contacto" class="contact">
-        <div class="contact-footer-content">
-            <h3 class="contact-footer-title">Contacto</h3>
-            <p class="contact-footer-text">Escribinos a <a href="mailto:info@cuadernosllenos.org" class="contact-footer-link">info@cuadernosllenos.org</a></p>
-            <p class="contact-footer-subtext">También podés encontrarnos en nuestras redes sociales.</p>
-        </div>
-    </footer>
 
     <script src="../js/main.js" defer></script>
 </body>
