@@ -14,25 +14,25 @@ const slideData = [
         title: 'A veces, lo que más necesita un chico para no abandonar la escuela es alguien que crea en él.',
         description: 'Tu tiempo puede cambiar una historia.',
         buttonText: 'Quiero ser voluntario',
-        buttonHref: 'quiero-ayudar.html'
+        buttonHref: 'pages/quiero-ayudar.html'
     },
     {
         title: 'Ningún sueño debería quedar incompleto por falta de oportunidades.',
         description: 'Ayudanos a llenar cuadernos y abrir caminos.',
         buttonText: 'Quiero Donar',
-        buttonHref: 'quiero-ayudar.html'
+        buttonHref: 'pages/quiero-ayudar.html'
     },
     {
         title: 'En cada barrio hay chicos con ganas de aprender.',
         description: 'Ayudanos a acercarles un lugar seguro para estudiar.',
         buttonText: 'Quiero ofrecer un espacio',
-        buttonHref: 'quiero-ayudar.html'
+        buttonHref: 'pages/quiero-ayudar.html'
     },
     {
         title: 'Cuando las herramientas en casa no alcanzan, la comunidad se vuelve familia.',
         description: 'Encontrá el lugar más cercano para que nadie aprenda en soledad.',
         buttonText: 'Buscar Puntos de Encuentro',
-        buttonHref: 'mapa.html'
+        buttonHref: 'pages/mapa.html'
     }
 ];
 
@@ -113,15 +113,44 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ===== FOOTER GLOBAL ===== */
+function getRootPath() {
+    const script = document.querySelector('script[src*="main.js"]');
+    if (!script) return '';
+    const src = script.getAttribute('src');
+    const match = src.match(/^(\.\.\/)+/);
+    return match ? match[0] : '';
+}
+
+const SITE_PAGES = {
+    index: 'index.html',
+    quienesSomos: 'pages/quienes-somos.html',
+    queHacemos: 'pages/que-hacemos.html',
+    mapa: 'pages/mapa.html',
+    quieroAyudar: 'pages/quiero-ayudar.html',
+    contacto: 'pages/contacto.html',
+    aprendemos: 'pages/programas/aprendemos.html',
+    futuros: 'pages/programas/futuros.html',
+    herramientas: 'pages/programas/herramientas.html',
+    empezar: 'pages/programas/empezar.html'
+};
+
+function pageUrl(key) {
+    return getRootPath() + SITE_PAGES[key];
+}
+
+function assetUrl(path) {
+    return getRootPath() + path;
+}
+
 function getSiteFooterHTML() {
     return `
     <footer class="site-footer" id="contacto">
         <div class="site-footer-main">
             <div class="site-footer-grid">
                 <div class="site-footer-brand">
-                    <a href="index.html" class="site-footer-logo-link" aria-label="Cuadernos Llenos - Inicio">
+                    <a href="${pageUrl('index')}" class="site-footer-logo-link" aria-label="Cuadernos Llenos - Inicio">
                         <span class="site-footer-logo-wrap">
-                            <img src="Img/logo.png" alt="Cuadernos Llenos">
+                            <img src="${assetUrl('Img/logo.png')}" alt="Cuadernos Llenos">
                         </span>
                     </a>
                     <p class="site-footer-brand-name">Cuadernos Llenos</p>
@@ -133,12 +162,12 @@ function getSiteFooterHTML() {
                     <h3 class="site-footer-heading">Menú</h3>
                     <span class="site-footer-accent" aria-hidden="true"></span>
                     <ul class="site-footer-links">
-                        <li><a href="index.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Inicio</a></li>
-                        <li><a href="quienes-somos.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Quiénes somos</a></li>
-                        <li><a href="que-hacemos.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Qué hacemos</a></li>
-                        <li><a href="mapa.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Puntos de encuentro</a></li>
-                        <li><a href="quiero-ayudar.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Quiero ayudar</a></li>
-                        <li><a href="contacto.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Contacto</a></li>
+                        <li><a href="${pageUrl('index')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Inicio</a></li>
+                        <li><a href="${pageUrl('quienesSomos')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Quiénes somos</a></li>
+                        <li><a href="${pageUrl('queHacemos')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Qué hacemos</a></li>
+                        <li><a href="${pageUrl('mapa')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Puntos de encuentro</a></li>
+                        <li><a href="${pageUrl('quieroAyudar')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Quiero ayudar</a></li>
+                        <li><a href="${pageUrl('contacto')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Contacto</a></li>
                     </ul>
                 </div>
 
@@ -146,10 +175,10 @@ function getSiteFooterHTML() {
                     <h3 class="site-footer-heading">Programas</h3>
                     <span class="site-footer-accent" aria-hidden="true"></span>
                     <ul class="site-footer-links">
-                        <li><a href="programa-aprendemos.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Aprendemos Juntos</a></li>
-                        <li><a href="programa-futuros.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Futuros en Curso</a></li>
-                        <li><a href="programa-herramientas.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Herramientas para Crear</a></li>
-                        <li><a href="programa-empezar.html"><span class="site-footer-chevron" aria-hidden="true">›</span> Empezar con un Cuaderno</a></li>
+                        <li><a href="${pageUrl('aprendemos')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Aprendemos Juntos</a></li>
+                        <li><a href="${pageUrl('futuros')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Futuros en Curso</a></li>
+                        <li><a href="${pageUrl('herramientas')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Herramientas para Crear</a></li>
+                        <li><a href="${pageUrl('empezar')}"><span class="site-footer-chevron" aria-hidden="true">›</span> Empezar con un Cuaderno</a></li>
                     </ul>
                 </div>
 
