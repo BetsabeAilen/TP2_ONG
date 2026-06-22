@@ -1,27 +1,37 @@
+<!--
+    PROYECTO: flexNav — Menú de navegación responsive con toggle
+    OBJETIVO: Navbar horizontal fija que se convierte en menú vertical
+    al hacer click en el botón X, usando classList.toggle.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>flexNav — Menú responsive</title>
+    <!-- styles.css define el layout flex del nav y la clase .flexNav para modo vertical -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+    <!-- header > nav > ul: estructura semántica de navegación -->
     <header>
         <nav>
             <ul>
+                <!-- Links de navegación (4 items) -->
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
+                <!-- Botón toggle: onclick llama abrirMenu() de script.js -->
                 <button onclick="abrirMenu()">X</button>
             </ul>
         </nav>
     </header>
 
+    <!-- Contenido principal con margen superior para no quedar bajo el nav fijo -->
     <main>
         <div>
             <h1>Hola mundo!</h1>

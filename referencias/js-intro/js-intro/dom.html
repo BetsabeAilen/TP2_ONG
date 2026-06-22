@@ -1,17 +1,29 @@
+<!--
+    PROYECTO: js-intro — Manipulación del DOM
+    OBJETIVO: Página con un h1 que script dom.js selecciona y modifica
+    (color de fondo, color de texto y contenido).
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>js-intro — DOM</title>
 </head>
 <body>
-    
+
+    <!--
+        h1 con clase "titulo" e id "titulo":
+        - class → selector CSS/JS: .titulo
+        - id    → selector CSS/JS: #titulo (único en la página)
+        dom.js lo selecciona con querySelector('h1') y lo modifica.
+    -->
     <h1 class="titulo" id="titulo">Título de prueba</h1>
 
+    <!-- Párrafos comentados: descomentar para probar querySelectorAll('.parrafo') -->
     <!-- <p class="parrafo">Parrafo 1</p>
     <p class="parrafo">Parrafo 2</p> -->
-    
+
     <script src="dom.js"></script>
 </body>
 </html>

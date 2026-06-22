@@ -1,37 +1,46 @@
+<!--
+    PROYECTO: footer-ejemplo — Footer responsive con 3 columnas
+    OBJETIVO: Demostrar layout flex en footer con media query
+    que apila columnas verticalmente en pantallas pequeñas.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Footer — Ejemplo responsive</title>
     <style>
+        /* PASO 1 — Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* PASO 2 — Footer: flex horizontal, 90% de ancho centrado, espacio entre columnas */
         footer {
             display: flex;
             width: 90%;
-            margin: 0 auto;
-            justify-content: space-between;
+            margin: 0 auto;             /* Centra el footer horizontalmente */
+            justify-content: space-between; /* Distribuye columnas con espacio entre ellas */
         }
 
+        /* PASO 3 — Cada columna ocupa 30% del ancho y 20% del alto de la ventana */
         .footer-column {
             width: 30%;
-            height: 20vh;
+            height: 20vh;               /* vh = porcentaje del alto de la ventana */
             border: 1px solid black;
         }
 
+        /* PASO 4 — Responsive: en pantallas ≤ 600px las columnas se apilan verticalmente */
         @media (max-width: 600px) {
             footer {
-                flex-direction: column;
+                flex-direction: column; /* Cambia de fila a columna */
             }
 
             .footer-column {
-                width: 100%;
+                width: 100%;            /* Cada columna ocupa todo el ancho */
             }
         }
     </style>
@@ -39,7 +48,9 @@
 
 <body>
 
+    <!-- PASO 5 — Tres columnas con contenido distinto -->
     <footer>
+        <!-- Columna 1: links de navegación -->
         <div class="footer-column">
             <ul>
                 <li>Link 1</li>
@@ -47,10 +58,14 @@
                 <li>Link 3</li>
             </ul>
         </div>
+
+        <!-- Columna 2: créditos y link "volver arriba" -->
         <div class="footer-column">
             <p>Hecho por...</p>
             <a href="#">Volver arriba</a>
         </div>
+
+        <!-- Columna 3: suscripción por email -->
         <div class="footer-column">
             <input type="email" placeholder="Ingresar e-mail"><br>
             <button>Subscribirse</button>

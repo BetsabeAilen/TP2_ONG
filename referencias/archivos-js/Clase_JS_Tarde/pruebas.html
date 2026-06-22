@@ -1,31 +1,48 @@
+<!--
+    PROYECTO: Clase JS Tarde — Pruebas: createElement básico
+    OBJETIVO: Probar la creación de un div en memoria, aplicar estilos
+    y explorar typeof y console.dir para depuración.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pruebas — createElement</title>
     <style>
+        /* Reset básico: quita márgenes y paddings por defecto del navegador */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: content-box;
+            box-sizing: content-box; /* width/height NO incluyen padding ni border */
         }
     </style>
 </head>
 
 <body>
     <script>
+        /*
+         * ALGORITMO PASO A PASO:
+         * 1. Crear un div en memoria con createElement
+         * 2. Aplicar estilos inline (background y color)
+         * 3. Inspeccionar el objeto con console.dir (muestra propiedades del DOM)
+         * 4. Probar typeof con null (devuelve "object", bug histórico de JS)
+         */
 
-        // Primero: Crear el elemento en memoria
-        const nuevoDiv = document.createElement('div')
-        // console.log(typeof nuevoDiv)
-        nuevoDiv.style.backgroundColor = "red"
-        nuevoDiv.style.color = "red"
-        console.dir(nuevoDiv)
-        let nulo = null
-        console.log(typeof nulo)
+        // PASO 1 — Crear elemento en memoria (aún no insertado en el DOM)
+        const nuevoDiv = document.createElement('div');
 
+        // PASO 2 — Estilos inline (se aplican aunque no esté en el DOM)
+        nuevoDiv.style.backgroundColor = "red";
+        nuevoDiv.style.color = "red";
+
+        // PASO 3 — console.dir muestra el árbol de propiedades del nodo HTML
+        console.dir(nuevoDiv);
+
+        // PASO 4 — typeof null devuelve "object" (comportamiento histórico incorrecto)
+        let nulo = null;
+        console.log(typeof nulo); // "object"
     </script>
 </body>
 

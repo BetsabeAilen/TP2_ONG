@@ -1,3 +1,8 @@
+<!--
+    PROYECTO: modal-landing-page — Modal dinámico con createElement
+    OBJETIVO: Crear un overlay/modal de donación desde JavaScript al cargar la página,
+    mostrarlo/ocultarlo intercambiando la clase CSS "active".
+-->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -165,6 +170,7 @@
 
 <body>
 
+    <!-- Contenido visible de la landing page -->
     <h1>Modal Test</h1>
 
     <p>
@@ -174,24 +180,36 @@
         <strong>appendChild()</strong>.
     </p>
 
+    <!-- Botón que llama openModal() para mostrar el overlay -->
     <button class="donate-btn" onclick="openModal()">
         Donar ahora
     </button>
 
     <script>
 
-        // =====================================
-        // 1. CREAR EL OVERLAY
-        // =====================================
+        /*
+         * ALGORITMO COMPLETO DEL MODAL:
+         *
+         * AL CARGAR LA PÁGINA (ejecución inmediata):
+         *   1. createElement('div') → crear overlay en memoria
+         *   2. classList.add('modal-overlay') → clase base (oculto por CSS)
+         *   3. innerHTML → cargar estructura del modal (formulario, botón cerrar)
+         *   4. appendChild → insertar overlay en body (sigue oculto)
+         *
+         * AL HACER CLICK EN "Donar ahora":
+         *   5. openModal() → classList.add('active') → CSS lo hace visible
+         *
+         * AL HACER CLICK EN "✕":
+         *   6. closeModal() → classList.remove('active') → CSS lo oculta
+         */
 
+        // PASO 1 — Crear el div overlay (fondo oscuro semitransparente)
         const modalOverlay = document.createElement('div');
 
+        // PASO 2 — Clase CSS: position fixed, display none por defecto
         modalOverlay.classList.add('modal-overlay');
 
-        // =====================================
-        // 2. DEFINIR EL HTML DEL MODAL
-        // =====================================
-
+        // PASO 3 — HTML interno: modal blanco con formulario de donación
         modalOverlay.innerHTML = `
         
         <div class="modal">
@@ -239,30 +257,17 @@
 
         `;
 
-        // =====================================
-        // 3. AGREGAR AL DOM
-        // =====================================
-
+        // PASO 4 — Insertar overlay en el DOM (permanece oculto hasta openModal)
         document.body.appendChild(modalOverlay);
 
-        // =====================================
-        // 4. MOSTRAR MODAL
-        // =====================================
-
+        // PASO 5 — Mostrar modal: agrega clase "active" → display: flex en CSS
         function openModal() {
-
             modalOverlay.classList.add('active');
-
         }
 
-        // =====================================
-        // 5. OCULTAR MODAL
-        // =====================================
-
+        // PASO 6 — Ocultar modal: quita clase "active" → display: none en CSS
         function closeModal() {
-
             modalOverlay.classList.remove('active');
-
         }
 
     </script>

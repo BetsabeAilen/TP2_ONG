@@ -1,42 +1,49 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 11: Bucles con HTMLCollection
+    OBJETIVO: Iterar una HTMLCollection (colección viva) con bucle for clásico
+    y modificar cada elemento del DOM.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>11 — Bucles HTMLCollection</title>
 
-    <!-- HTMLCollection vs NodeList
-
-    HTMLCollection:
-        Colección viva (se actualiza automáticamente si el DOM cambia)
-        Solo contiene elementos (no nodos de texto, comentarios, etc.)
-        Métodos disponibles: ninguno (solo acceso por índice o nombre) -->
-
+    <!--
+        HTMLCollection vs NodeList:
+        - HTMLCollection: colección VIVA (se actualiza si el DOM cambia)
+        - Solo contiene ELEMENTOS (no nodos de texto ni comentarios)
+        - NO tiene forEach nativo → se itera con for clásico
+    -->
 </head>
 
 <body>
 
+    <!-- Tres divs con clase "item" que JavaScript recorrerá -->
     <div class="item">Item 1</div>
     <div class="item">Item 2</div>
     <div class="item">Item 3</div>
 
-
     <script>
+        /*
+         * ALGORITMO PASO A PASO:
+         * 1. Obtener todos los elementos con clase "item" → HTMLCollection
+         * 2. Recorrer la colección con bucle for (índice 0 hasta length-1)
+         * 3. En cada iteración: imprimir texto y cambiar color a rojo
+         */
 
-        // Obtener HTMLCollection (viva)
+        // PASO 1 — getElementsByClassName devuelve HTMLCollection (viva)
         const itemsHTML = document.getElementsByClassName('item');
         console.log('HTMLCollection:', itemsHTML);
 
-        // Formas de iterar (HTMLCollection no tiene forEach nativo)
-
-        // 1. Bucle for clásico
+        // PASO 2 y 3 — Bucle for clásico (HTMLCollection no tiene forEach)
         console.log('Bucle for:');
         for (let i = 0; i < itemsHTML.length; i++) {
-            console.log(itemsHTML[i].textContent);
-            itemsHTML[i].style.color = 'red';
+            console.log(itemsHTML[i].textContent);  // Imprime el texto de cada item
+            itemsHTML[i].style.color = 'red';          // Aplica color rojo al elemento i
         }
-
     </script>
 </body>
 

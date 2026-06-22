@@ -1,56 +1,61 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 05: Selectores del DOM
+    OBJETIVO: Aprender los métodos tradicionales y modernos para seleccionar
+    elementos HTML desde JavaScript.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>05 — Selectores del DOM</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE A — Métodos TRADICIONALES
+         * Existen desde las primeras versiones de JavaScript en el navegador.
+         * ═══════════════════════════════════════════
+         */
 
-// Selectores del DOM
-        
-// Métodos tradicionales
-
-        // Seleccionar por ID
+        // PASO 1 — Seleccionar UN elemento por su atributo id (único en la página)
         document.getElementById('miId');
 
-
-        // Seleccionar por clase (HTMLCollection)
+        // PASO 2 — Seleccionar TODOS los elementos con una clase → devuelve HTMLCollection
         document.getElementsByClassName('miClase');
 
-
-        // Seleccionar por tag (HTMLCollection)
+        // PASO 3 — Seleccionar TODOS los elementos de una etiqueta → HTMLCollection
         document.getElementsByTagName('div');
 
-
-        // Seleccionar por name (NodeList)
+        // PASO 4 — Seleccionar por atributo name (común en formularios) → NodeList
         document.getElementsByName('username');
 
-        // Seleccionar los HTMLCollection y Nodelists individualmente (por índice), 
-        // para poder aplicarles estilos: 
+        // PASO 5 — Acceder a un elemento individual de la colección por índice
         // elemento[0].style.color = 'red';
 
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE B — Métodos MODERNOS (querySelector)
+         * Usan la misma sintaxis que los selectores CSS. Recomendados hoy.
+         * ═══════════════════════════════════════════
+         */
 
-// Métodos modernos(querySelector)
+        // PASO 6 — querySelector: devuelve el PRIMER elemento que coincida
+        document.querySelector('.clase');           // por clase CSS
+        document.querySelector('#id');              // por id
+        document.querySelector('div');              // por etiqueta
+        document.querySelector('[data-atributo]');  // por atributo personalizado
 
-        // Seleccionar el primer elemento que coincida
-        document.querySelector('.clase'); // Por clase
-        document.querySelector('#id'); // Por ID
-        document.querySelector('div'); // Por etiqueta
-        document.querySelector('[data-atributo]'); // Por atributo
-
-
-        // Seleccionar todos los elementos que coincidan (NodeList)
-        document.querySelectorAll('.clase'); // Por clase
-        document.querySelectorAll('div.highlight'); // Por clase y etiqueta
-        document.querySelectorAll('input[type="text"]'); // Por atributo
-        document.querySelectorAll('ul li'); // Por etiqueta dentro de una lista
-        document.querySelectorAll('p'); // Todos los párrafos
-        
+        // PASO 7 — querySelectorAll: devuelve TODOS los que coincidan → NodeList
+        document.querySelectorAll('.clase');
+        document.querySelectorAll('div.highlight');      // etiqueta + clase
+        document.querySelectorAll('input[type="text"]'); // por atributo
+        document.querySelectorAll('ul li');              // descendiente
+        document.querySelectorAll('p');
     </script>
 </body>
 

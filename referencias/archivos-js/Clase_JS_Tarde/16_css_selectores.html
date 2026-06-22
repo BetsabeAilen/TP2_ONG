@@ -1,60 +1,67 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 16: Selectores CSS avanzados
+    OBJETIVO: Referencia de selectores CSS usables también en querySelector/querySelectorAll.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>16 — Selectores CSS</title>
     <style>
-
+        /* Este bloque está vacío; los selectores se documentan en el script */
     </style>
 </head>
 <body>
-    
+
     <script>
+        /*
+         * Estos strings son selectores CSS válidos para usar en:
+         *   document.querySelector('...')
+         *   document.querySelectorAll('...')
+         *   element.matches('...')
+         */
 
-// Selectores CSS avanzados
+        // ═══ PASO 1 — Selectores BÁSICOS ═══
+        '#header'       // Por ID (único en la página)
+        '.menu-item'    // Por clase
+        'div'           // Por etiqueta HTML
 
-        // Básicos
-        '#header' // ID
-        '.menu-item' // Clase
-        'div' // Etiqueta
+        // ═══ PASO 2 — COMBINADORES (relaciones entre elementos) ═══
+        'div p'         // Descendiente: <p> en cualquier nivel dentro de <div>
+        'div > p'       // Hijo directo: <p> hijo inmediato de <div>
+        'h2 + p'        // Hermano adyacente: <p> justo después de <h2>
+        'h2 ~ p'        // Hermanos generales: todos los <p> después de <h2>
 
-        // Combinadores
-        'div p' // Descendiente
-        'div > p' // Hijo directo
-        'h2 + p' // Hermano adyacente
-        'h2 ~ p' // Hermanos generales
+        // ═══ PASO 3 — Selectores de ATRIBUTOS ═══
+        'input[type="text"]'    // Input cuyo type es "text"
+        'a[href^="https"]'      // Enlaces cuyo href EMPIEZA con "https"
+        'img[src$=".jpg"]'      // Imágenes cuyo src TERMINA en ".jpg"
+        'div[class*="error"]'   // Divs cuya clase CONTIENE "error"
 
-        // Atributos
-        'input[type="text"]'
-        'a[href^="https"]' // Que empieza con
-        'img[src$=".jpg"]' // Que termina con
-        'div[class*="error"]' // Que contiene
+        // ═══ PASO 4 — PSEUDO-CLASES (estado del elemento) ═══
+        'button:hover'          // Al pasar el cursor
+        'tr:nth-child(odd)'     // Filas impares de tabla
+        'input:focus'           // Input con foco activo
+        'li:first-child'        // Primer hijo de su padre
+        'a:not(.external)'      // Enlaces SIN clase "external"
+        'p:empty'               // Párrafos sin contenido
+        'input:checked'         // Checkboxes/radios seleccionados
+        'input:disabled'        // Inputs deshabilitados
 
-        // Pseudo-clases
-        'button:hover' // Al pasar el ratón
-        'tr:nth-child(odd)' // Filas impares de una tabla
-        'input:focus' // Input enfocado
-        'li:first-child' // Primer hijo
-        'a:not(.external)' // No tiene clase "external"
-        'p:empty' // Párrafos vacíos
-        'input:checked' // Inputs seleccionados
-        'input:disabled' // Inputs deshabilitados
+        // ═══ PASO 5 — PSEUDO-ELEMENTOS (partes del contenido) ═══
+        'p::first-line'         // Primera línea de un párrafo
+        'p::first-letter'       // Primera letra de un párrafo
+        'div::before'           // Contenido generado ANTES del div
+        'div::after'            // Contenido generado DESPUÉS del div
+        'span::selection'       // Texto seleccionado por el usuario
 
-        // Pseudo-elementos
-        'p::first-line' // Primera línea de un párrafo
-        'p::first-letter' // Primera letra de un párrafo
-        'div::before' // Antes del contenido de un div
-        'div::after' // Después del contenido de un div
-        'span::selection' // Texto seleccionado dentro de un span
-
-        // Combinaciones
-        'div > p.highlight' // Párrafos destacados directos de un div
-        'ul li:first-child' // Primer elemento de una lista
-        'ul li:last-child' // Último elemento de una lista
-        'ul li:nth-child(2n)' // Elementos pares de una lista
-        'div p::first-letter' // Primera letra de un párrafo dentro de un div
-
+        // ═══ PASO 6 — COMBINACIONES avanzadas ═══
+        'div > p.highlight'     // Párrafos destacados hijos directos de div
+        'ul li:first-child'     // Primer item de lista
+        'ul li:last-child'      // Último item de lista
+        'ul li:nth-child(2n)'   // Items pares (2, 4, 6...)
+        'div p::first-letter'   // Primera letra de párrafos dentro de div
     </script>
 </body>
 </html>

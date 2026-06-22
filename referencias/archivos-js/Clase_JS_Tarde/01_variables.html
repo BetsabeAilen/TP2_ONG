@@ -1,30 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--
+    PROYECTO: Clase JS Tarde — Lección 01: Variables
+    OBJETIVO: Aprender los tres tipos de declaración de variables en JavaScript
+    y cómo mostrarlas en la consola del navegador.
+-->
+<!DOCTYPE html> <!-- Indica al navegador que usamos HTML5 -->
+<html lang="es"> <!-- Contenedor raíz; lang="es" indica idioma español -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Cabecera: metadatos que no se ven en pantalla -->
+    <meta charset="UTF-8"> <!-- Permite acentos, ñ y caracteres especiales -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptación a móviles -->
+    <title>01 — Variables en JavaScript</title> <!-- Texto de la pestaña del navegador -->
 </head>
 
 <body>
+    <!-- El cuerpo está vacío porque todo el código corre en el script de abajo -->
 
     <script>
-        
-// Tipos de Variables en JavaScript
-        
-        // var (obsoleto)
+        /*
+         * PASO 1 — Tipos de variables en JavaScript
+         * JavaScript ofrece tres formas de declarar variables.
+         * Cada una tiene reglas distintas sobre reasignación y alcance.
+         */
+
+        // PASO 1a — var (obsoleto, evitar en código nuevo)
+        // Se puede reasignar y tiene alcance de función (no de bloque).
         var nombre = "valor";
 
-        // let (reasignable)
+        // PASO 1b — let (reasignable, alcance de bloque)
+        // Usar cuando el valor va a cambiar durante la ejecución.
         let nombreVariable = 10;
 
-        // const (no reasignable)
+        // PASO 1c — const (no reasignable, alcance de bloque)
+        // Usar para valores que no deben cambiar después de asignarse.
         const nombreConstante = "pi";
 
-        // Mostrar variable en consola
-        console.log(nombreVariable);
-
+        /*
+         * PASO 2 — Mostrar el valor en consola
+         * console.log() imprime información en las DevTools (F12 → Consola).
+         * Útil para depurar y verificar qué valor tiene una variable.
+         */
+        console.log(nombreVariable); // Imprime: 10
     </script>
 </body>
 

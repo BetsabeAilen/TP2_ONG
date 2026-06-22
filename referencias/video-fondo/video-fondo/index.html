@@ -1,60 +1,73 @@
+<!--
+    PROYECTO: video-fondo — Landing page con video de fondo
+    OBJETIVO: Página con video a pantalla completa detrás del contenido,
+    header centrado y navegación con botones estilizados.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>video-fondo — Landing con video</title>
     <style>
+        /* PASO 1 — Reset básico */
         * {
             margin: 0;
             padding: 0;
         }
 
+        /* PASO 2 — Imagen del header: circular y con márgenes */
         img {
             width: 200px;
-            border-radius: 100px;
+            border-radius: 100px;   /* Círculo perfecto (mitad del ancho) */
             margin-top: 100px;
-            margin-bottom: 20px
+            margin-bottom: 20px;
         }
 
+        /* PASO 3 — Header con contenido centrado horizontalmente */
         header {
             text-align: center;
         }
 
+        /* PASO 4 — Links de redes en línea (sin salto de línea) */
         header ul li {
             display: inline;
         }
 
+        /* PASO 5 — Navegación centrada con margen superior */
         nav {
             text-align: center;
             margin-top: 50px;
         }
 
         nav li {
-            margin-bottom: 30px;
+            margin-bottom: 30px;    /* Espacio entre items del menú */
         }
 
+        /* PASO 6 — Botones/links del nav: fondo verde, bordes redondeados, ancho generoso */
         nav a {
             padding: 10px 200px;
             background-color: rgb(132, 255, 0);
             border-radius: 20px;
-        } 
+        }
 
+        /* PASO 7 — Video de fondo: cubre toda la pantalla, detrás del contenido */
         #video-fondo {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            position: fixed;
+            width: 100vw;           /* Ancho completo de la ventana */
+            height: 100vh;          /* Alto completo de la ventana */
+            object-fit: cover;      /* Cubre sin deformar (recorta si hace falta) */
+            position: fixed;        /* Fijo al hacer scroll */
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: -1;            /* Detrás de todo el contenido */
         }
     </style>
 </head>
 
 <body>
 
+    <!-- PASO 8 — Header: logo, títulos y links de redes sociales -->
     <header>
         <img src="ludwig.png" alt="">
         <h1>Título</h1>
@@ -65,6 +78,7 @@
         </ul>
     </header>
 
+    <!-- PASO 9 — Navegación principal con links estilizados como botones -->
     <nav>
         <ul>
             <li><a href="/Identikit/index_final.html">Identikit</a></li>
@@ -73,6 +87,7 @@
         </ul>
     </nav>
 
+    <!-- PASO 10 — Video de fondo: autoplay (inicia solo), loop (repite), muted (sin sonido, requerido para autoplay) -->
     <video id="video-fondo" autoplay loop muted>
         <source src="video.mp4" type="video/mp4">
     </video>

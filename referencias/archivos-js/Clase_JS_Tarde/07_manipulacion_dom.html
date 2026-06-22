@@ -1,54 +1,74 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 07: Manipulación del DOM
+    OBJETIVO: Referencia de métodos para crear, modificar, insertar,
+    clonar, eliminar y reemplazar nodos HTML desde JavaScript.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>07 — Manipulación del DOM</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 1 — CREAR elementos nuevos en memoria
+         * Aún no aparecen en pantalla hasta insertarlos en el DOM.
+         * ═══════════════════════════════════════════
+         */
+        const nuevoDiv = document.createElement('div');           // Crea etiqueta <div>
+        const nuevoTexto = document.createTextNode('Hola mundo'); // Crea nodo de texto puro
 
-// Creación y Manipulación de Nodos
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 2 — MODIFICAR propiedades de un elemento existente
+         * ═══════════════════════════════════════════
+         */
+        elemento.textContent = 'Nuevo texto';              // Solo texto (seguro, sin HTML)
+        elemento.innerHTML = '<strong>Texto</strong> con HTML'; // Interpreta etiquetas HTML
+        elemento.setAttribute('id', 'nuevoId');              // Agrega/modifica atributo HTML
+        elemento.classList.add('nueva-clase');             // Agrega clase CSS
+        elemento.classList.remove('clase-vieja');          // Quita clase CSS
+        elemento.classList.toggle('clase-activa');         // Agrega si no existe, quita si existe
+        elemento.style.color = 'blue';                     // Estilo inline (camelCase en JS)
+        // background-color (CSS) → backgroundColor (JavaScript)
 
-        // Crear elementos
-        const nuevoDiv = document.createElement('div');
-        const nuevoTexto = document.createTextNode('Hola mundo');
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 3 — INSERTAR elementos en el árbol del DOM
+         * ═══════════════════════════════════════════
+         */
+        padre.appendChild(elemento);           // Al final del padre (tradicional)
+        padre.insertBefore(nuevo, referencia); // Justo antes del nodo "referencia"
+        padre.prepend(elemento);               // Al principio (moderno)
+        padre.append(elemento);                // Al final (moderno, acepta múltiples)
 
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 4 — CLONAR un elemento existente
+         * ═══════════════════════════════════════════
+         */
+        const clon = elemento.cloneNode(true); // true = copia profunda (incluye hijos)
 
-        // Modificar elementos
-        elemento.textContent = 'Nuevo texto';
-        elemento.innerHTML = '<strong>Texto</strong> con HTML';
-        elemento.setAttribute('id', 'nuevoId');
-        elemento.classList.add('nueva-clase');
-        elemento.classList.remove('clase-vieja');
-        elemento.classList.toggle('clase-activa');
-        elemento.style.color = 'blue';
-        // Las propiedades CSS en JavaScript se escriben en camelCase
-        // Ejemplo: background-color (CSS) se convierte en backgroundColor (JavaScript)
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 5 — ELIMINAR elementos del DOM
+         * ═══════════════════════════════════════════
+         */
+        elemento.remove();              // Moderno: el elemento se elimina a sí mismo
+        padre.removeChild(elemento);    // Tradicional: el padre elimina al hijo
 
-
-        // Insertar elementos
-        padre.appendChild(elemento); // Al final
-        padre.insertBefore(nuevo, referencia); // Antes de referencia
-        padre.prepend(elemento); // Al principio (moderno)
-        padre.append(elemento); // Al final (moderno)
-
-
-        // Clonar elementos
-        const clon = elemento.cloneNode(true); // true = copia profunda
-
-
-        // Eliminar elementos
-        elemento.remove(); // Moderno
-        padre.removeChild(elemento); // Tradicional
-
-
-        // Reemplazar elementos
-        padre.replaceChild(nuevo, viejo);
-
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 6 — REEMPLAZAR un elemento por otro
+         * ═══════════════════════════════════════════
+         */
+        padre.replaceChild(nuevo, viejo); // Sustituye "viejo" por "nuevo" dentro de "padre"
     </script>
 </body>
 

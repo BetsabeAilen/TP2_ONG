@@ -1,36 +1,46 @@
+<!--
+    PROYECTO: Clase JS Tarde — Práctica: innerHTML en article
+    OBJETIVO: Ejercicio corto para insertar contenido HTML completo
+    en un <article> vacío usando template literals.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-
-    </style>
+    <title>Práctica — innerHTML en article</title>
+    <style></style>
 </head>
 
 <body>
 
+    <!-- Elementos de contexto (no se modifican en este ejercicio) -->
     <h1>Título de prueba</h1>
     <h1>Título de prueba 2</h1>
-
     <p>Hola mundo</p>
-
     <div></div>
-
     <ul>
         <li>Elemento 1</li>
         <li>Elemento 2</li>
         <li>Elemento 3</li>
     </ul>
 
+    <!-- Contenedor vacío que recibirá el contenido del artículo -->
     <article></article>
 
-
     <script>
+        /*
+         * ALGORITMO PASO A PASO:
+         * 1. Seleccionar el elemento <article> con querySelector
+         * 2. Asignar innerHTML con un template literal multilínea
+         * 3. El navegador interpreta las etiquetas HTML y las renderiza
+         */
 
+        // PASO 1 — Seleccionar el article vacío
         const article = document.querySelector('article');
+
+        // PASO 2 y 3 — Insertar estructura HTML completa de un post de blog
         article.innerHTML = `
             <h2>Título del post</h2>
             <time datetime="2025-06-08">08 de junio de 2025</time><br>
@@ -38,7 +48,6 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <a href="#">Leer más</a>
         `;
-
     </script>
 </body>
 

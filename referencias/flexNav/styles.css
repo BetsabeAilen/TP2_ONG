@@ -1,48 +1,68 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/*
+ * PROYECTO: flexNav — styles.css
+ * OBJETIVO: Estilos para navbar horizontal fija con toggle a menú vertical.
+ *
+ * ESTRUCTURA PASO A PASO:
+ * 1. Reset universal (*)
+ * 2. nav como referencia de posicionamiento
+ * 3. ul como barra flex horizontal fija
+ * 4. li como items del menú
+ * 5. button como toggle posicionado arriba a la derecha
+ * 6. .flexNav como modo vertical (activado por JS)
+ * 7. main con margen para no quedar bajo el nav
+ */
 
-        nav {
-            position: relative;
-        }
+/* PASO 1 — Reset: quitar márgenes/paddings por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        nav ul {
-            display: flex;
-            position: fixed;
-            top: 0;
-            z-index: 10;
-            /* Propiedades de Estilo Visual */
-            background-color: violet;
-            width: 100vw;
-            height: 48px;
-            gap: 12px;
-        }
+/* PASO 2 — nav como contenedor de referencia para posicionamiento absoluto del botón */
+nav {
+    position: relative;
+}
 
-        li {
-            display: flex;
-            align-items: center;
-            background-color: green;
-            list-style: none;
-            height: 48px;
-            padding: 0 32px;
-        }
+/* PASO 3 — Barra de navegación: flex horizontal, fija arriba, ancho completo */
+nav ul {
+    display: flex;              /* Layout flexbox en fila */
+    position: fixed;            /* Fija respecto a la ventana */
+    top: 0;
+    z-index: 10;                /* Por encima del contenido */
+    background-color: violet;
+    width: 100vw;               /* 100% del ancho de la ventana */
+    height: 48px;
+    gap: 12px;                  /* Espacio entre items */
+}
 
-        button {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            z-index: 20;
-        }
+/* PASO 4 — Cada item del menú: centrado verticalmente con flex */
+li {
+    display: flex;
+    align-items: center;        /* Centra contenido verticalmente */
+    background-color: green;
+    list-style: none;           /* Quita viñetas de lista */
+    height: 48px;
+    padding: 0 32px;            /* Espacio interno horizontal */
+}
 
-        .flexNav {
-            flex-direction: column;
-            align-items: stretch;
-            height: auto;
-            gap: 8px;
-        }
+/* PASO 5 — Botón toggle: posicionado arriba a la derecha, sobre el nav */
+button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 20;                /* Por encima del nav (z-index 10) */
+}
 
-        main {
-            margin-top: 48px;
-        }
+/* PASO 6 — Clase toggled por JS: convierte el menú en columna vertical */
+.flexNav {
+    flex-direction: column;     /* Items apilados verticalmente */
+    align-items: stretch;       /* Items ocupan todo el ancho */
+    height: auto;               /* Altura se adapta al contenido */
+    gap: 8px;
+}
+
+/* PASO 7 — Margen superior en main para compensar el nav fijo de 48px */
+main {
+    margin-top: 48px;
+}

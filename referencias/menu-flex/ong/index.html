@@ -1,17 +1,25 @@
+<!--
+    PROYECTO: menu-flex — Navbar con logo a la izquierda y links a la derecha
+    OBJETIVO: Demostrar flexbox con justify-content y posicionamiento absoluto
+    del logo; media query cambia color en pantallas pequeñas.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>menu-flex — Navbar ONG</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+
+    <!-- header semántico: agrupa la navegación principal -->
     <header>
         <nav>
             <ul>
+                <!-- Primer li: logo posicionado absolutamente a la izquierda (CSS) -->
                 <li><a href="#"><img src="logo.png" width="25" height="25"></a></li>
+                <!-- Links de navegación alineados a la derecha con justify-content: end -->
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Acerca de</a></li>
                 <li><a href="#">Noticias</a></li>

@@ -1,35 +1,45 @@
+<!--
+    PROYECTO: calculadoraImpacto — Calculadora de impacto de donaciones
+    OBJETIVO: Al hacer click en "Donar", JavaScript crea un modal dinámico
+    que calcula cuántos kits escolares se pueden comprar con el monto ingresado.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Impacto</title>
     <style>
+        /* Reset: elimina márgenes/paddings por defecto y usa border-box */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Estilos del modal que JS crea dinámicamente con classList.add("modalStyle") */
         .modalStyle {
-            background-color: rgb(18, 85, 185);
-            width: 50%;
-            height: 50%;
-            position: fixed;
+            background-color: rgb(18, 85, 185); /* Fondo azul */
+            width: 50%;                          /* Mitad del ancho de pantalla */
+            height: 50%;                         /* Mitad del alto de pantalla */
+            position: fixed;                     /* Fijo respecto a la ventana */
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);    /* Centrado perfecto */
         }
 
-        p {
-            color: white;
-        }
+        p { color: white; } /* Texto blanco dentro del modal */
     </style>
 </head>
 <body>
 
+    <!--
+        Botón principal: onclick="abrirModal()" llama a la función definida en script.js
+        Al hacer click se ejecuta todo el algoritmo de creación del modal.
+    -->
     <button id="donar" onclick="abrirModal()">Donar</button>
 
+    <!-- script.js contiene la función abrirModal() con el algoritmo completo -->
     <script src="script.js"></script>
 </body>
 </html>

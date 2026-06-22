@@ -1,75 +1,93 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 02: Tipos de datos
+    OBJETIVO: Conocer los tipos primitivos y no primitivos de JavaScript
+    y cómo comprobar el tipo de un valor con typeof.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>02 — Tipos de datos</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE A — Tipos de datos PRIMITIVOS
+         * Son valores simples e inmutables (no se pueden modificar en sí mismos).
+         * ═══════════════════════════════════════════
+         */
 
-// Tipos de Datos Primitivos
-
-        // String (cadena de texto)
+        // PASO 1 — String (cadena de texto)
+        // Se escribe entre comillas simples o dobles.
         const texto = "Hola mundo";
         const comillas = "Se puede usar 'comillas simples' o \"dobles\"";
 
-
-        // Number (número)
+        // PASO 2 — Number (número)
+        // Incluye enteros, decimales, Infinity y NaN (Not a Number).
         const entero = 42;
         const decimal = 3.14;
         const infinito = Infinity;
-        const noNumero = NaN; // Not a Number
+        const noNumero = NaN;
 
-        
-        // Boolean (booleano)
+        // PASO 3 — Boolean (booleano)
+        // Solo puede ser true (verdadero) o false (falso).
         const verdadero = true;
         const falso = false;
 
-
-        // Null (valor nulo)
+        // PASO 4 — Null (valor nulo intencional)
+        // Representa "sin valor" de forma explícita.
         const nulo = null;
-        console.log(nulo); // null
-        console.log(typeof nulo); // "object" (esto es un comportamiento histórico en JavaScript)
+        console.log(nulo);           // null
+        console.log(typeof nulo);    // "object" ← comportamiento histórico de JS (bug conocido)
 
-        // Undefined (no definido)
-        let noDefinido;
+        // PASO 5 — Undefined (no definido)
+        // Ocurre cuando una variable se declara pero no se le asigna valor.
+        let noDefinido;              // queda undefined automáticamente
         const noDefinido2 = undefined;
 
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE B — Tipos de datos NO PRIMITIVOS (Objetos)
+         * Son estructuras que agrupan múltiples valores.
+         * ═══════════════════════════════════════════
+         */
 
-// Tipos de Datos No Primitivos (Objetos)
-
-        // Object (objeto)
+        // PASO 6 — Object (objeto)
+        // Colección de pares clave: valor.
         const objeto = {
             clave: "valor",
             numero: 123,
-            funcion: function () { } // Método del Objeto
+            funcion: function () { } // método: función dentro de un objeto
         };
 
-
-        // Array (arreglo)
+        // PASO 7 — Array (arreglo)
+        // Lista ordenada de elementos de cualquier tipo.
         const arreglo = [1, "dos", true, { clave: "valor" }];
-        console.log(arreglo[0]); // 1
+        console.log(arreglo[0]); // 1 ← acceso por índice (empieza en 0)
 
-
-        // Date (fecha)
+        // PASO 8 — Date (fecha)
+        // Objeto que representa una fecha y hora.
         const fecha = new Date();
 
-
-// Comprobación de Tipos
-
-        typeof "texto"; // "string"
-        typeof 42;      // "number"
-        typeof true;    // "boolean"
-        typeof null;    // "object" (¡error conocido en !)
-        typeof undefined; // "undefined"
-        typeof {};      // "object"
-        typeof [];      // "object"
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE C — Comprobación de tipos con typeof
+         * Devuelve un string con el nombre del tipo.
+         * ═══════════════════════════════════════════
+         */
+        typeof "texto";        // "string"
+        typeof 42;             // "number"
+        typeof true;           // "boolean"
+        typeof null;           // "object" (¡error conocido!)
+        typeof undefined;      // "undefined"
+        typeof {};             // "object"
+        typeof [];             // "object"
         typeof function () { }; // "function"
-
     </script>
 </body>
 

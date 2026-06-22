@@ -1,22 +1,23 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 12: Bucles con NodeList
+    OBJETIVO: Iterar NodeList con forEach, for...of y childNodes;
+    comparar con HTMLCollection.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>12 — Bucles NodeList</title>
 
-    <!-- HTMLCollection vs NodeList
-
-    NodeList:
-        Colección estática (por defecto, excepto en algunos casos como childNodes)
-        Puede contener cualquier tipo de nodo (elementos, texto, comentarios)
-        Métodos disponibles: forEach(), entries(), keys(), values() (en versiones modernas) 
-
-    Consejo: 
-        En código moderno, generalmente es preferible usar querySelectorAll 
-        (que devuelve NodeList) por su mayor flexibilidad y métodos disponibles.-->
-
+    <!--
+        NodeList vs HTMLCollection:
+        - NodeList: colección ESTÁTICA (no se actualiza automáticamente)
+        - Puede contener cualquier tipo de nodo (elementos, texto, comentarios)
+        - Tiene forEach(), entries(), keys(), values()
+        - Consejo: preferir querySelectorAll en código moderno
+    -->
 </head>
 
 <body>
@@ -29,39 +30,44 @@
         <li class="elemento">Elemento 3</li>
     </ul>
 
-
-
     <script>
+        /*
+         * ALGORITMO PASO A PASO:
+         * 1. Obtener NodeList con querySelectorAll (solo elementos .elemento)
+         * 2. Obtener childNodes del <ul> (TODOS los nodos, incluido texto)
+         * 3. Iterar con forEach → aplicar negrita
+         * 4. Iterar con for...of → imprimir textos
+         * 5. Recorrer childNodes → mostrar tipo de cada nodo
+         */
 
-// Obtener NodeList (normalmente estática)
+        // PASO 1 — querySelectorAll devuelve NodeList estática de elementos
         const itemsNode = document.querySelectorAll('.elemento');
+
+        // PASO 2 — childNodes incluye elementos, texto y comentarios
         const childNodes = document.getElementById('lista').childNodes;
 
         console.log('NodeList (querySelectorAll):', itemsNode);
         console.log('NodeList (childNodes):', childNodes);
 
-// Formas de iterar (NodeList moderno tiene forEach)
-
-        // 1. forEach (solo en NodeList de querySelectorAll)
+        // PASO 3 — forEach: método moderno disponible en NodeList
         console.log('forEach:');
         itemsNode.forEach((item, index) => {
             console.log(`${index}: ${item.textContent}`);
             item.style.fontWeight = 'bold';
         });
 
-        // 2. Bucle for...of
+        // PASO 4 — for...of: iteración directa sobre cada elemento
         console.log('for...of:');
         for (const item of itemsNode) {
             console.log(item.textContent);
         }
 
-        // 3. childNodes muestra TODOS los nodos
+        // PASO 5 — childNodes muestra TODOS los tipos de nodo
         console.log('Recorriendo childNodes:');
         childNodes.forEach(node => {
             console.log(`Tipo: ${node.nodeType} - Contenido: ${node.textContent?.trim()}`);
             // nodeType: 1=Elemento, 3=Texto, 8=Comentario
         });
-
     </script>
 </body>
 

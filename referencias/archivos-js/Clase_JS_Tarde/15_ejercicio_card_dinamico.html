@@ -1,10 +1,15 @@
+<!--
+    PROYECTO: Clase JS Tarde — Ejercicio 15: Cards dinámicas con datos
+    OBJETIVO: Generar múltiples cards desde un array de objetos,
+    usando una función reutilizable y delegación de eventos.
+-->
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo de Card</title>
+    <title>15 — Cards dinámicas</title>
     <style>
         .card-container {
             display: flex;
@@ -22,25 +27,10 @@
             font-family: Arial, sans-serif;
         }
 
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 15px;
-        }
-
-        .card-title {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-        }
-
-        .card-text {
-            color: #555;
-            margin-bottom: 15px;
-        }
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 15px; }
+        .card-title { margin: 0 0 10px 0; font-size: 1.5rem; }
+        .card-text { color: #555; margin-bottom: 15px; }
 
         .card-btn {
             display: inline-block;
@@ -50,22 +40,41 @@
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .card-btn:hover {
-            background-color: #0056b3;
-        }
+        .card-btn:hover { background-color: #0056b3; }
     </style>
 </head>
 
 <body>
-    <div id="cardContainer" class="card-container">
-        <!-- Las cards se insertarán aquí -->
-    </div>
+    <div id="cardContainer" class="card-container"></div>
 
     <script>
+        /*
+         * ALGORITMO COMPLETO PASO A PASO:
+         *
+         * FASE 1 — DATOS
+         *   1. Definir array "productos" con objetos {titulo, imagen, descripcion, precio}
+         *
+         * FASE 2 — CREACIÓN DE CARDS
+         *   2. Función crearCard(producto):
+         *      a. Crear div.card
+         *      b. Cargar innerHTML con datos del producto (template literal)
+         *      c. Retornar el div listo
+         *   3. Obtener contenedor #cardContainer
+         *   4. Recorrer productos con forEach → appendChild(crearCard(producto))
+         *
+         * FASE 3 — EVENTOS (delegación)
+         *   5. Escuchar click en el CONTENEDOR (no en cada botón)
+         *   6. Si el click fue en .card-btn:
+         *      a. Subir al div.card padre con closest('.card')
+         *      b. Leer el título de la card
+         *      c. Mostrar alert con el nombre del producto
+         */
 
-        // Datos para múltiples cards
+        // ═══ FASE 1 — PASO 1: Array de datos ═══
         const productos = [
             {
                 titulo: 'Producto 1',
@@ -87,12 +96,12 @@
             }
         ];
 
-
-        // Función para crear una card
+        // ═══ FASE 2 — PASO 2: Función factory para crear una card ═══
         function crearCard(producto) {
             const card = document.createElement('div');
             card.className = 'card';
 
+            // Template literal: inserta propiedades del objeto en el HTML
             card.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.titulo}" class="card-img">
         <div class="card-body">
@@ -103,27 +112,24 @@
         </div>
     `;
 
-            return card;
+            return card; // Devuelve el nodo listo para insertar
         }
 
-
-        // Insertar todas las cards
+        // ═══ FASE 2 — PASOS 3 y 4: Insertar todas las cards ═══
         const contenedor = document.getElementById('cardContainer');
         productos.forEach(producto => {
             contenedor.appendChild(crearCard(producto));
         });
 
-
-        // Agregar evento a los botones (delegación de eventos)
+        // ═══ FASE 3 — PASOS 5-6: Delegación de eventos ═══
+        // Un solo listener en el padre maneja clicks de TODOS los botones (actuales y futuros)
         contenedor.addEventListener('click', function (e) {
             if (e.target.classList.contains('card-btn')) {
-                const card = e.target.closest('.card');
+                const card = e.target.closest('.card'); // Sube al div.card más cercano
                 const titulo = card.querySelector('.card-title').textContent;
                 alert(`Agregaste "${titulo}" al carrito`);
             }
         });
-
-
     </script>
 </body>
 

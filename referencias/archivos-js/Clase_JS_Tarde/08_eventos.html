@@ -1,161 +1,168 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 08: Eventos del DOM
+    OBJETIVO: Referencia completa de cómo escuchar, manejar y delegar eventos
+    en elementos HTML con JavaScript.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>08 — Eventos del DOM</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 1 — AGREGAR event listeners (escuchadores)
+         * Un evento es una acción del usuario o del navegador (click, tecla, etc.)
+         * ═══════════════════════════════════════════
+         */
 
-// Eventos del DOM
-    
-        // Agregar Eventos
-
-        // Método recomendado (puede múltiples listeners)
+        // Método RECOMENDADO: permite múltiples listeners en el mismo evento
         elemento.addEventListener('evento', manejador);
 
-        // Métodos antiguos (solo un listener)
+        // Métodos ANTIGUOS: solo permiten UN listener (el último sobrescribe)
         elemento.onclick = function () { /*...*/ };
-        elemento.onclick = manejador; // Sobrescribe el anterior
+        elemento.onclick = manejador;
 
-        // Remover Eventos
-        
-        elemento.removeEventListener('evento', manejador); // Debe ser la misma función
+        // PASO 2 — REMOVER un listener (debe ser la misma referencia de función)
+        elemento.removeEventListener('evento', manejador);
 
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 3 — TIPOS de eventos comunes
+         * ═══════════════════════════════════════════
+         */
 
-// Tipos de Eventos Comunes
-        
-        // Eventos del Ratón
-        'click'      // Click simple
-        'dblclick'   // Doble click
-        'mousedown'  // Botón presionado
-        'mouseup'    // Botón liberado
-        'mouseover'  // Entra en el elemento
-        'mouseout'   // Sale del elemento
-        'mousemove'  // Se mueve dentro del elemento
+        // Eventos del RATÓN
+        'click'       // Click simple
+        'dblclick'    // Doble click
+        'mousedown'   // Botón presionado
+        'mouseup'     // Botón liberado
+        'mouseover'   // Cursor entra al elemento
+        'mouseout'    // Cursor sale del elemento
+        'mousemove'   // Cursor se mueve dentro
         'contextmenu' // Click derecho
-        
-        // Eventos del Teclado
-        'keydown'    // Tecla presionada
-        'keyup'      // Tecla liberada
-        'keypress'   // Tecla presionada (obsoleto)
 
-        // Eventos de Formularios
-        'submit'     // Envío de formulario
-        'change'     // Valor cambiado (input, select, textarea)
-        'input'      // Valor cambiado (en tiempo real)
-        'focus'      // Elemento enfocado
-        'blur'       // Elemento pierde foco
-        'invalid'    // Validación fallida
+        // Eventos del TECLADO
+        'keydown'     // Tecla presionada
+        'keyup'       // Tecla liberada
+        'keypress'    // Tecla presionada (obsoleto)
 
-        // Eventos de Ventana
-        'load'       // Página cargada
-        'DOMContentLoaded' // DOM cargado (sin esperar recursos)
-        'resize'     // Ventana redimensionada
-        'scroll'     // Scroll realizado
-        'beforeunload' // Antes de cerrar la página
+        // Eventos de FORMULARIOS
+        'submit'      // Envío de formulario
+        'change'      // Valor cambiado (al perder foco)
+        'input'       // Valor cambiado en tiempo real
+        'focus'       // Elemento recibe foco
+        'blur'        // Elemento pierde foco
+        'invalid'     // Validación HTML5 fallida
 
-        // Eventos Multimedia
-        'play'       // Medio iniciado
-        'pause'      // Medio pausado
-        'ended'      // Medio terminado
+        // Eventos de VENTANA
+        'load'              // Página completamente cargada
+        'DOMContentLoaded'  // DOM listo (sin esperar imágenes)
+        'resize'            // Ventana redimensionada
+        'scroll'            // Scroll realizado
+        'beforeunload'      // Antes de cerrar la página
 
+        // Eventos MULTIMEDIA
+        'play'    // Medio iniciado
+        'pause'   // Medio pausado
+        'ended'   // Medio terminado
 
-// Objeto Evento y sus Propiedades
-
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 4 — Objeto EVENTO (parámetro "e" del manejador)
+         * Contiene información sobre qué pasó y dónde.
+         * ═══════════════════════════════════════════
+         */
         elemento.addEventListener('click', function (e) {
             // Propiedades comunes
             e.type;           // Tipo de evento ('click')
-            e.target;         // Elemento que originó el evento
-            e.currentTarget;  // Elemento con el listener (igual a 'this')
+            e.target;         // Elemento que ORIGINÓ el evento
+            e.currentTarget;  // Elemento que TIENE el listener (igual a 'this')
 
-            // Para eventos de ratón
-            e.clientX;        // Coordenada X en la ventana
-            e.clientY;        // Coordenada Y en la ventana
-            e.pageX;          // Coordenada X en el documento
-            e.pageY;          // Coordenada Y en el documento
-            e.button;         // Botón presionado (0=izq, 1=medio, 2=der)
+            // Propiedades de RATÓN
+            e.clientX;  // Coordenada X relativa a la ventana
+            e.clientY;  // Coordenada Y relativa a la ventana
+            e.pageX;    // Coordenada X relativa al documento
+            e.pageY;    // Coordenada Y relativa al documento
+            e.button;   // Botón: 0=izquierdo, 1=medio, 2=derecho
 
-            // Para eventos de teclado
-            e.key;            // Tecla presionada ('Enter', 'a', etc.)
-            e.code;           // Código físico de la tecla ('KeyA')
-            e.ctrlKey;        // Ctrl presionado (booleano)
-            e.shiftKey;       // Shift presionado
-            e.altKey;         // Alt presionado
-            e.metaKey;        // Cmd (Mac) o Win (Windows) presionado
+            // Propiedades de TECLADO
+            e.key;      // Tecla presionada ('Enter', 'a', etc.)
+            e.code;     // Código físico ('KeyA')
+            e.ctrlKey;  // true si Ctrl está presionado
+            e.shiftKey; // true si Shift está presionado
+            e.altKey;   // true si Alt está presionado
+            e.metaKey;  // true si Cmd (Mac) o Win está presionado
 
             // Métodos importantes
-            e.preventDefault();  // Evita comportamiento por defecto
-            e.stopPropagation(); // Detiene la propagación
+            e.preventDefault();   // Cancela comportamiento por defecto (ej: envío de form)
+            e.stopPropagation();  // Evita que el evento suba a elementos padre
         });
 
-// Delegación de Eventos
-
-        // Escuchar eventos en un padre para elementos hijos
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 5 — DELEGACIÓN de eventos
+         * Escuchar en un padre para manejar clicks en hijos dinámicos.
+         * ═══════════════════════════════════════════
+         */
         document.getElementById('lista').addEventListener('click', function (e) {
             if (e.target.matches('li.item')) {
                 console.log('Click en item:', e.target);
             }
         });
 
-
-// Eventos Personalizados
-
-        // Crear evento
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 6 — EVENTOS personalizados
+         * Crear y disparar eventos propios.
+         * ═══════════════════════════════════════════
+         */
         const evento = new CustomEvent('miEvento', {
             detail: { mensaje: 'Hola mundo' },
-            bubbles: true,
-            cancelable: true
+            bubbles: true,      // El evento sube por el DOM
+            cancelable: true    // Se puede cancelar con preventDefault()
         });
+        elemento.dispatchEvent(evento); // Disparar el evento
 
-
-        // Disparar evento
-        elemento.dispatchEvent(evento);
-
-
-        // Escuchar evento
         elemento.addEventListener('miEvento', function (e) {
             console.log(e.detail.mensaje); // "Hola mundo"
         });
 
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 7 — PATRONES comunes de uso
+         * ═══════════════════════════════════════════
+         */
 
-// Patrones Comunes
-        
-        // Ejecutar código cuando el DOM está listo
-
+        // 7a — Ejecutar código cuando el DOM está listo
         document.addEventListener('DOMContentLoaded', function () {
             // Tu código aquí
         });
 
-
-        // Prevenir envío de formulario
-
+        // 7b — Prevenir envío automático de formulario
         formulario.addEventListener('submit', function (e) {
             e.preventDefault();
             // Validar y enviar manualmente
         });
 
-
-        // Evento de tecla específica
-
+        // 7c — Detectar tecla específica
         input.addEventListener('keydown', function (e) {
             if (e.key === 'Enter') {
                 console.log('Enter presionado');
             }
         });
 
-
-        // One - time event(solo se ejecuta una vez)
-
+        // 7d — Evento que se ejecuta UNA sola vez
         elemento.addEventListener('click', function manejador(e) {
             console.log('Solo una vez!');
             e.currentTarget.removeEventListener(e.type, manejador);
         });
-
     </script>
 </body>
 

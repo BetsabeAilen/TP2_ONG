@@ -1,96 +1,100 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 03: Conversiones de tipos
+    OBJETIVO: Aprender conversiones explícitas (forzadas) e implícitas (automáticas)
+    entre String, Number y Boolean en JavaScript.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>03 — Conversiones de tipos</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE A — Conversiones EXPLÍCITAS (forzadas)
+         * El programador indica explícitamente el tipo destino.
+         * ═══════════════════════════════════════════
+         */
 
-// Conversión de Tipos
+        // PASO 1 — Convertir a String
+        String(123);          // "123" — función global
+        (123).toString();     // "123" — método del número
 
-        // A String
-        String(123); // "123"
-        (123).toString(); // "123"
+        // PASO 2 — Convertir a Number
+        Number("42");         // 42 — convierte todo el string
+        parseInt("42px");     // 42 — parsea enteros (ignora lo que sigue)
+        parseFloat("3.14");   // 3.14 — parsea decimales
+        +"123";               // 123 — operador unario + fuerza conversión numérica
 
+        // PASO 3 — Convertir a Boolean
+        Boolean(1);           // true
+        Boolean(0);           // false
+        Boolean(null);        // false
+        Boolean(undefined);   // false
+        !"texto";             // false — negación convierte a boolean y lo invierte
+        !!"texto";            // true — doble negación = conversión a true
 
-        // A Number
-        Number("42"); // 42
-        parseInt("42px"); // 42
-        parseFloat("3.14"); // 3.14
-        +"123"; // 123 (operador unario +)
+        /*
+         * ═══════════════════════════════════════════
+         * PARTE B — Conversiones IMPLÍCITAS (automáticas)
+         * JavaScript convierte tipos solo cuando lo necesita.
+         * ═══════════════════════════════════════════
+         */
 
-
-        // A Boolean
-        Boolean(1); // true
-        Boolean(0); // false
-        Boolean(null); // false
-        Boolean(undefined); // false
-        !"texto"; // false (negación lógica)
-        !!"texto";  // true (doble negación)
-
-
-        // Conversión implícita
-
+        // PASO 4 — En condicionales: strings no vacíos son "truthy"
         if ("texto") {
             console.log("Esto se ejecuta porque 'texto' es truthy");
         }
 
-        // Conversión implícita en operaciones
+        // PASO 5 — En operaciones aritméticas
+        let resultado = "5" + 2;  // "52" — el + con string concatena
+        resultado = "5" - 2;      // 3 — resta fuerza conversión a number
+        resultado = "5" * 2;      // 10
+        resultado = "5" / 2;      // 2.5
+        console.log(resultado);
 
-        let resultado = "5" + 2; // "52" (concatenación de string)
-        resultado = "5" - 2; // 3 (string convertido a number)
-        resultado = "5" * 2; // 10 (string convertido a number)
-        resultado = "5" / 2; // 2.5 (string convertido a number)
-        console.log(resultado); // Imprime 2.5
+        // PASO 6 — En comparaciones
+        console.log("5" == 5);    // true — == compara valores (convierte tipos)
+        console.log("5" === 5);   // false — === compara valor Y tipo (estricta)
+        console.log("5" != 5);    // false
+        console.log("5" !== 5);   // true
 
-        // Conversión implícita en comparaciones
+        // PASO 7 — En operadores lógicos (&&, ||)
+        console.log("texto" && 42);              // 42 — devuelve el último truthy
+        console.log(0 || "texto");               // "texto" — devuelve el primer truthy
+        console.log(null || "valor por defecto"); // "valor por defecto"
 
-        console.log("5" == 5); // true (comparación débil, string convertido a number)
-        console.log("5" === 5); // false (comparación estricta, tipos diferentes)
-        console.log("5" != 5); // false (comparación débil, string convertido a number)
-        console.log("5" !== 5); // true (comparación estricta, tipos diferentes)
-
-        // Conversión implícita en operaciones lógicas
-
-        console.log("texto" && 42); // 42 (el último valor truthy)
-        console.log(0 || "texto"); // "texto" (el primer valor truthy)
-        console.log(null || "valor por defecto"); // "valor por defecto" (null es falsy)
-
-        // Conversión implícita en funciones
-
+        // PASO 8 — En funciones: los argumentos se convierten según el uso
         function saludar(nombre) {
-            console.log("Hola, " + nombre);
+            console.log("Hola, " + nombre); // + con string concatena → convierte a string
         }
-        saludar("Mundo"); // "Hola, Mundo"
-        saludar(42); // "Hola, 42" (número convertido a string)
-        saludar(); // "Hola, undefined" (undefined convertido a string)
+        saludar("Mundo");  // "Hola, Mundo"
+        saludar(42);       // "Hola, 42"
+        saludar();         // "Hola, undefined"
 
-        // Conversión implícita en objetos
-
+        // PASO 9 — En objetos
         let obj = { nombre: "Juan" };
-        console.log(obj); // { nombre: "Juan" }
-        console.log(obj.toString()); // "[object Object]" (objeto convertido a string)
-        console.log(obj.valueOf()); // { nombre: "Juan" } (objeto convertido a su valor primitivo)
+        console.log(obj);              // { nombre: "Juan" }
+        console.log(obj.toString());   // "[object Object]"
+        console.log(obj.valueOf());    // { nombre: "Juan" }
 
-        // Conversión implícita en arrays
-
+        // PASO 10 — En arrays
         let arr = [1, 2, 3];
-        console.log(arr); // [1, 2, 3]
-        console.log(arr.toString()); // "1,2,3" (array convertido a string)
-        console.log(arr.valueOf()); // [1, 2, 3] (array convertido a su valor primitivo)
+        console.log(arr);              // [1, 2, 3]
+        console.log(arr.toString());   // "1,2,3"
+        console.log(arr.valueOf());    // [1, 2, 3]
 
-        // Conversión implícita en fechas
-
+        // PASO 11 — En fechas
         let fecha = new Date();
-        console.log(fecha); // Fecha actual
-        console.log(fecha.toString()); // "Fri Oct 06 2023 12:34:56 GMT+0200 (Central European Summer Time)" (fecha convertida a string)
-        console.log(fecha.valueOf()); // 1696595696000 (fecha convertida a su valor primitivo en milisegundos)
-    
+        console.log(fecha);
+        console.log(fecha.toString()); // fecha como string legible
+        console.log(fecha.valueOf());  // milisegundos desde 1970 (timestamp)
     </script>
 </body>
 

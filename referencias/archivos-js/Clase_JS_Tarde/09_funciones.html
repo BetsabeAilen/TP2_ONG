@@ -1,117 +1,119 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 09: Funciones
+    OBJETIVO: Aprender las distintas formas de declarar funciones, parámetros,
+    callbacks, funciones async/await e IIFE en JavaScript.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>09 — Funciones</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 1 — Formas de DECLARAR funciones
+         * ═══════════════════════════════════════════
+         */
 
-// Funciones en JavaScript
-
-        // 1. Declaración de Funciones
-
+        // 1a — Declaración de función (hoisted: se puede usar antes de declararla)
         function nombre() {
             // ...código de la función...
         }
 
-        // 2. Expresiones
-
+        // 1b — Expresión de función (asignada a una variable)
         const suma = function (a, b) {
             return a + b;
         };
 
-        // 3. Función flecha (ES6 +)
-
+        // 1c — Función flecha ES6+ (sintaxis más corta)
         const suma2 = (a, b) => {
             return a + b;
         };
 
-        // Return implícito
+        // 1d — Flecha con return implícito (una sola expresión)
         const suma3 = (a, b) => a + b;
 
-        // 4. Funciones Anónimas
-
+        // 1e — Funciones anónimas (sin nombre, útiles como callbacks)
         const funcionAnonima = function () {
             console.log('Soy una función anónima');
         };
-
         const funcionAnonimaFlecha = () => {
             console.log('Soy una función anónima flecha');
         };
 
-// Parámetros y Argumentos
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 2 — PARÁMETROS y argumentos
+         * Los parámetros son variables locales dentro de la función.
+         * ═══════════════════════════════════════════
+         */
 
-        // Cuando se define una función como la siguiente:
-
+        // Parámetro con valor por defecto
         function saludar(nombre = 'Usuario') {
             return `Hola ${nombre}`;
         }
+        console.log(saludar('Juan'));  // "Hola Juan" — argumento 'Juan' → parámetro nombre
+        console.log(saludar());        // "Hola Usuario" — sin argumento, usa el default
 
-        console.log(saludar('Juan')); // "Hola Juan"
-        console.log(saludar()); // "Hola Usuario"
-
-        // El parámetro nombre funciona como una variable local dentro de la función.
-        // Si llamas a saludar('Juan'), el valor 'Juan' se asigna a la variable nombre 
-        // y puedes usarlo dentro de la función, por ejemplo en el template string ${ nombre }.
-
-        // Si no pasas ningún argumento, nombre toma el valor por defecto 'Usuario'.
-        // Esta variable solo existe dentro del alcance de la función y no fuera de ella.
-
-
-        function saludar(nombre = 'Usuario', apellido = 'Apellido') {
+        // Múltiples parámetros con defaults
+        function saludarCompleto(nombre = 'Usuario', apellido = 'Apellido') {
             return `Hola ${nombre} ${apellido}`;
         }
+        console.log(saludarCompleto('Juan', 'Pérez')); // "Hola Juan Pérez"
 
-        console.log(saludar('Juan', 'Pérez')); // "Hola Juan Pérez"
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 3 — Funciones ESPECIALES
+         * ═══════════════════════════════════════════
+         */
 
-// Funciones Especiales
-
-        // Funciones Anónimas
-
+        // 3a — Callback: función pasada como argumento a otra función
         setTimeout(function () {
             console.log('Ejecutado después de 1s');
         }, 1000);
 
-
-        // Funciones Autoejecutables (IIFE)
-
+        // 3b — IIFE: función que se ejecuta inmediatamente al definirse
         (function () {
             console.log('Se ejecuta inmediatamente');
         })();
 
-
-        // Con parámetros
+        // IIFE con parámetros
         (function (a, b) {
-            console.log(a + b);
+            console.log(a + b); // 8
         })(5, 3);
 
-
-// Funciones Async / Await
-
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 4 — Funciones ASYNC / AWAIT
+         * Para operaciones asíncronas (fetch, timers, etc.)
+         * ═══════════════════════════════════════════
+         */
         async function obtenerDatos() {
-            const respuesta = await fetch('https://api.example.com/data');
-            const datos = await respuesta.json();
+            const respuesta = await fetch('https://api.example.com/data'); // Espera respuesta HTTP
+            const datos = await respuesta.json();                          // Espera parseo JSON
             return datos;
         }
 
-
-// Callbacks
-
+        /*
+         * ═══════════════════════════════════════════
+         * PASO 5 — PATRÓN CALLBACK
+         * Una función recibe otra función para ejecutarla cuando termine.
+         * ═══════════════════════════════════════════
+         */
         function procesarDatos(datos, callback) {
-            // Procesamiento...
-            const resultado = datos.toUpperCase();
-            callback(resultado);
+            const resultado = datos.toUpperCase(); // Procesamiento
+            callback(resultado);                 // Ejecuta la función recibida
         }
 
         procesarDatos('hola', function (res) {
             console.log(res); // "HOLA"
         });
-
     </script>
 </body>
 

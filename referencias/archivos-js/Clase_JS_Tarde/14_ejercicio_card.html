@@ -1,46 +1,42 @@
+<!--
+    PROYECTO: Clase JS Tarde — Ejercicio 14: Card estática con createElement
+    OBJETIVO: Construir una tarjeta (card) HTML pieza por pieza con createElement
+    y appendChild, sin usar innerHTML.
+-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo de Card</title>
+    <title>14 — Ejercicio Card</title>
     <style>
+        /* Contenedor flex que alinea las cards en fila con espacio entre ellas */
         .card-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap;   /* Permite que bajen a otra fila si no entran */
             gap: 20px;
             padding: 20px;
         }
-        
+
         .card {
             width: 300px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            overflow: hidden;
+            overflow: hidden;  /* Recorta contenido que sobresalga */
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             font-family: Arial, sans-serif;
         }
-        
+
         .card-img {
             width: 100%;
             height: 200px;
-            object-fit: cover;
+            object-fit: cover; /* Imagen cubre el espacio sin deformarse */
         }
-        
-        .card-body {
-            padding: 15px;
-        }
-        
-        .card-title {
-            margin: 0 0 10px 0;
-            font-size: 1.5rem;
-        }
-        
-        .card-text {
-            color: #555;
-            margin-bottom: 15px;
-        }
-        
+
+        .card-body { padding: 15px; }
+        .card-title { margin: 0 0 10px 0; font-size: 1.5rem; }
+        .card-text { color: #555; margin-bottom: 15px; }
+
         .card-btn {
             display: inline-block;
             padding: 8px 16px;
@@ -50,65 +46,70 @@
             border-radius: 4px;
             transition: background-color 0.3s;
         }
-        
-        .card-btn:hover {
-            background-color: #0056b3;
-        }
+
+        .card-btn:hover { background-color: #0056b3; }
     </style>
 </head>
 <body>
-    <div id="cardContainer" class="card-container">
-        <!-- Las cards se insertarán aquí -->
-    </div>
+    <!-- Contenedor vacío donde JS insertará la card -->
+    <div id="cardContainer" class="card-container"></div>
 
     <script>
+        /*
+         * ALGORITMO PASO A PASO — Construcción de card con createElement:
+         *
+         * 1. Crear div.card (contenedor principal)
+         * 2. Crear img.card-img (imagen)
+         * 3. Crear div.card-body (cuerpo de texto)
+         * 4. Crear h3.card-title (título)
+         * 5. Crear p.card-text (descripción)
+         * 6. Crear a.card-btn (botón/enlace)
+         * 7. Ensamblar: título + texto + botón → cardBody
+         * 8. Ensamblar: imagen + cardBody → card
+         * 9. Insertar card en #cardContainer
+         */
 
-// Crear elementos de la card
-
-const card = document.createElement('div');
+        // PASO 1 — Contenedor principal de la card
+        const card = document.createElement('div');
         card.className = 'card';
-        
-        // Crear imagen
+
+        // PASO 2 — Imagen de la card
         const img = document.createElement('img');
         img.className = 'card-img';
         img.src = 'https://via.placeholder.com/300x200';
         img.alt = 'Imagen de ejemplo';
-        
-       
- // Crear cuerpo de la card
 
- const cardBody = document.createElement('div');
+        // PASO 3 — Cuerpo de la card (agrupa título, texto y botón)
+        const cardBody = document.createElement('div');
         cardBody.className = 'card-body';
-        
-        // Crear título
+
+        // PASO 4 — Título
         const title = document.createElement('h3');
         title.className = 'card-title';
         title.textContent = 'Título de la Card';
-        
-        // Crear texto
+
+        // PASO 5 — Texto descriptivo
         const text = document.createElement('p');
         text.className = 'card-text';
-        text.textContent = 'Este es un ejemplo de cómo crear y agregar una card dinámicamente con .';
-        
-        // Crear botón
+        text.textContent = 'Este es un ejemplo de cómo crear y agregar una card dinámicamente.';
+
+        // PASO 6 — Botón/enlace de acción
         const button = document.createElement('a');
         button.className = 'card-btn';
         button.href = '#';
         button.textContent = 'Ver más';
-        
-// Ensamblar la card
-        
+
+        // PASO 7 — Ensamblar el cuerpo: título → texto → botón
         cardBody.appendChild(title);
         cardBody.appendChild(text);
         cardBody.appendChild(button);
-        
+
+        // PASO 8 — Ensamblar la card: imagen → cuerpo
         card.appendChild(img);
         card.appendChild(cardBody);
-        
-// Insertar la card en el contenedor
 
+        // PASO 9 — Insertar la card completa en el contenedor de la página
         document.getElementById('cardContainer').appendChild(card);
-
-</script>
+    </script>
 </body>
 </html>

@@ -1,57 +1,91 @@
+<!--
+    PROYECTO: Clase JS Tarde — Ejercicio 08b: Modal con eventos
+    OBJETIVO: Crear un modal dinámicamente con createElement, mostrarlo/ocultarlo
+    intercambiando clases CSS al hacer click en botones.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>08b — Ejercicio modal con eventos</title>
     <style>
-
+        /* PASO CSS 1 — Clase para OCULTAR el modal (display: none) */
         .modal-oculto {
             display: none;
         }
 
+        /* PASO CSS 2 — Clase para MOSTRAR el modal como overlay de pantalla completa */
         .mostrar-modal {
             display: block;
-            position: fixed;
-            z-index: 1;
+            position: fixed;              /* Fijo respecto a la ventana */
+            z-index: 1;                   /* Por encima del resto del contenido */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            overflow: auto;               /* Scroll si el contenido es largo */
+            background-color: rgba(0,0,0,0.4); /* Fondo semitransparente oscuro */
         }
-
     </style>
 </head>
 <body>
 
+    <!-- Botón visible al cargar la página; al hacer click debería abrir el modal -->
     <button>Click me</button>
 
     <script>
+        /*
+         * ALGORITMO PASO A PASO DEL MODAL:
+         *
+         * 1. Seleccionar el botón del HTML
+         * 2. Crear el div del modal en memoria
+         * 3. Agregar clase "modal-oculto" (invisible al inicio)
+         * 4. Cargar HTML interno del modal (contenido + botón cerrar)
+         * 5. Insertar el modal en el body del documento
+         * 6. Definir función mostrarModal() que intercambia clases CSS
+         * 7. Dentro de mostrarModal, registrar evento click en botón cerrar
+         * 8. El botón cerrar invierte las clases → oculta el modal
+         */
 
+        // PASO 1 — Seleccionar el botón existente en el HTML
         const boton = document.querySelector('button');
+
+        // PASO 2 — Crear el contenedor del modal (aún no visible)
         const modal = document.createElement('div');
+
+        // PASO 3 — Aplicar clase que lo mantiene oculto al cargar
         modal.classList.add('modal-oculto');
+
+        // PASO 4 — Definir la estructura HTML interna del modal
         modal.innerHTML = `
             <div class="modal-content">
                 <span class="cerrar">&times;</span>
                 <p>Hola, soy un modal!</p>
             </div>
         `;
+
+        // PASO 5 — Agregar el modal al DOM (sigue oculto por la clase CSS)
         document.body.appendChild(modal);
 
+        // PASO 6 — Función que MUESTRA el modal intercambiando clases
         function mostrarModal() {
+            // Quitar clase oculta y agregar clase visible
             modal.classList.remove('modal-oculto');
             modal.classList.add('mostrar-modal');
 
+            // PASO 7 — Buscar el botón cerrar (×) dentro del modal
             const cerrarModal = modal.querySelector('.cerrar');
+
+            // PASO 8 — Al hacer click en ×, ocultar el modal
             cerrarModal.addEventListener('click', function() {
                 modal.classList.remove('mostrar-modal');
                 modal.classList.add('modal-oculto');
             });
         }
-        
+
+        // NOTA: Para completar el flujo, falta conectar el botón inicial:
+        // boton.addEventListener('click', mostrarModal);
     </script>
 </body>
 </html>

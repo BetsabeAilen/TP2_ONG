@@ -1,9 +1,39 @@
+/*
+ * PROYECTO: calculadoraImpacto — script.js
+ * OBJETIVO: Crear un modal dinámico de calculadora de impacto de donaciones.
+ *
+ * ═══════════════════════════════════════════════════════════
+ * ALGORITMO COMPLETO DE abrirModal():
+ *
+ * FASE 1 — CREACIÓN DEL MODAL
+ *   1. Crear div contenedor con createElement
+ *   2. Cargar HTML interno (título, input, botones) con innerHTML
+ *   3. Insertar el div en document.body con appendChild
+ *   4. Agregar clase CSS "modalStyle" para posicionamiento y estilos
+ *
+ * FASE 2 — REFERENCIAS A ELEMENTOS
+ *   5. Buscar input, botones y párrafo de resultado con querySelector
+ *      (búsqueda relativa al modal, no a todo el documento)
+ *
+ * FASE 3 — LÓGICA DE CÁLCULO
+ *   6. Definir función calcularImpacto(monto):
+ *      a. Precio fijo de kit escolar = $5000
+ *      b. cantidadKits = monto / precioKitEscolar
+ *      c. Mostrar resultado en el párrafo #resultadoImpacto
+ *
+ * FASE 4 — EVENT LISTENERS
+ *   7. Botón "Calcular": leer valor del input → llamar calcularImpacto()
+ *   8. Botón "Cerrar": eliminar el modal del DOM con .remove()
+ *   9. Botón "Hacer la donación": reemplazar innerHTML con mensaje de gracias
+ * ═══════════════════════════════════════════════════════════
+ */
+
 function abrirModal() {
-    // 1. Creamos un nuevo elemento <div> desde JavaScript.
-    // Este div va a funcionar como contenedor de toda la calculadora.
+
+    // ─── FASE 1 — PASO 1: Crear contenedor del modal en memoria ───
     let modal = document.createElement("div");
 
-    // 2. Cargamos dentro del div toda la estructura HTML que necesita la calculadora:
+    // ─── FASE 1 — PASO 2: Estructura HTML de la calculadora ───
     modal.innerHTML = `<h1>Calculadora de Impacto</h1>
                             
                             <input type="number" id="montoDonacion" placeholder="Ingresá un monto">
@@ -14,45 +44,38 @@ function abrirModal() {
                             <button id="hacerDonacion">Hacer la donación</button>
                             <button id="cerrar">Cerrar</button>`;
 
-    // 3. Insertamos el nuevo div al DOM para que aparezca en pantalla.
+    // ─── FASE 1 — PASO 3: Insertar en el DOM (ahora es visible) ───
     document.body.appendChild(modal);
 
-    // 4. Agregamos una clase CSS al div para aplicarle estilos desde la hoja de estilos.
+    // ─── FASE 1 — PASO 4: Aplicar estilos CSS predefinidos ───
     modal.classList.add("modalStyle")
 
-    // 5. Buscamos dentro del nuevo div los elementos que vamos a necesitar manipular.
-    // Usamos nuevoDiv.querySelector para limitar la búsqueda al contenido recién creado.
+    // ─── FASE 2 — PASO 5: Obtener referencias a elementos internos ───
     let inputMonto = modal.querySelector("#montoDonacion");
     let botonCalcular = modal.querySelector("#calcularImpacto");
     let resultadoImpacto = modal.querySelector("#resultadoImpacto");
     let botonHacerDonacion = modal.querySelector("#hacerDonacion");
     let botonCerrar = modal.querySelector("#cerrar");
 
-    // 6. Definimos una función para calcular el impacto de la donación:
-    // Recibe un monto, calcula cuántos kits escolares se pueden comprar y los muestra en pantalla
+    // ─── FASE 3 — PASO 6: Función de cálculo de impacto ───
     function calcularImpacto(monto) {
-        // Definimos el costo fijo de cada elemento.
-        let precioKitEscolar = 5000;
-        // Cuenta que calcula en cuántos kits se convierte la donación
-        let cantidadKits = monto / precioKitEscolar;
-        // Agregamos el texto al párrafo <p>
+        let precioKitEscolar = 5000;              // Costo fijo por kit
+        let cantidadKits = monto / precioKitEscolar; // División: monto ÷ precio
         resultadoImpacto.textContent = `Con tu donación se pueden entregar ${cantidadKits} kits escolares.`;
     }
 
-    // 7. Cuando el usuario hace click en "Calcular",
-    // tomamos el valor escrito en el input y llamamos a la función calcularImpacto.
+    // ─── FASE 4 — PASO 7: Evento click en "Calcular" ───
     botonCalcular.addEventListener("click", function () {
-        let monto = inputMonto.value;
-        calcularImpacto(monto);
+        let monto = inputMonto.value; // Lee el valor del input (string)
+        calcularImpacto(monto);       // Pasa el monto a la función de cálculo
     });
 
-    // 8. El botón "Cerrar" elimina el div completo de la página.
+    // ─── FASE 4 — PASO 8: Evento click en "Cerrar" ───
     botonCerrar.addEventListener("click", function () {
-        modal.remove();
+        modal.remove(); // Elimina el modal completo del DOM
     });
 
-    // 9. El botón "Hacer la donación" reemplaza el contenido de la calculadora
-    // por una pantalla simple de agradecimiento.
+    // ─── FASE 4 — PASO 9: Evento click en "Hacer la donación" ───
     botonHacerDonacion.addEventListener("click", function () {
         modal.innerHTML = `<h1>Gracias por tu donación</h1>
                                 <a href="index.html">Volver</a>`;

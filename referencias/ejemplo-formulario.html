@@ -1,35 +1,50 @@
+<!--
+    PROYECTO: ejemplo-formulario — Formulario HTML con captura de datos en JS
+    OBJETIVO: Demostrar inputs de distintos tipos y capturar los datos
+    enviados con FormData + preventDefault (sin recargar la página).
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejemplo — Formulario</title>
 </head>
 
 <body>
 
+    <!--
+        PASO HTML — Estructura del formulario:
+        Cada campo tiene <label> (accesibilidad) + <input>/<select>/<textarea>
+        El atributo "name" es OBLIGATORIO para que FormData capture el valor.
+    -->
     <form>
 
+        <!-- PASO 1 — Campo de texto: nombre -->
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br>
 
+        <!-- PASO 2 — Campo de texto: apellido -->
         <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" name="apellido"><br>
 
+        <!-- PASO 3 — Campo email: validación nativa del navegador -->
         <label for="email">Dirección de e-mail:</label>
         <input type="email" id="email" name="email"><br>
 
+        <!-- PASO 4 — Campo numérico: edad -->
         <label for="edad">Edad:</label>
         <input type="number" id="edad" name="edad"><br>
 
+        <!-- PASO 5 — Radio buttons: solo uno seleccionable (mismo name="lenguaje") -->
         <span>Lenguaje Favorito:</span>
         <input type="radio" id="html" value="html" name="lenguaje">
         <label for="html">HTML</label>
         <input type="radio" id="css" value="css" name="lenguaje">
         <label for="css">CSS</label><br>
 
-
+        <!-- PASO 6 — Select desplegable: nacionalidad -->
         <label for="nacionalidad">Seleccione su nacionalidad:</label>
         <select id="nacionalidad" name="nacionalidad">
             <option value="Argentina">💙 Argentina</option>
@@ -37,26 +52,37 @@
             <option value="Brasil">Brasil</option>
         </select> <br>
 
+        <!-- PASO 7 — Textarea: mensaje multilínea -->
         <textarea name="mensaje" style="width:70%; height:50px;"></textarea><br>
 
-        <input type="submit" value="Enviar">
-        <input type="reset" value="Borrar formulario">
+        <!-- PASO 8 — Botones de acción -->
+        <input type="submit" value="Enviar">       <!-- Dispara evento submit -->
+        <input type="reset" value="Borrar formulario"> <!-- Limpia todos los campos -->
 
     </form>
 
     <script>
+        /*
+         * ALGORITMO PASO A PASO — Captura de datos del formulario:
+         * 1. Seleccionar el <form> con querySelector
+         * 2. Escuchar el evento 'submit'
+         * 3. preventDefault() → evitar recarga de página
+         * 4. Crear FormData(form) → objeto con todos los pares name:value
+         * 5. Convertir FormData a objeto plano con Object.fromEntries
+         * 6. Imprimir en consola para verificar
+         */
 
-        // Script para ver por consola los datos enviados (agregar name a los inputs)
-
+        // PASO 1
         const form = document.querySelector('form');
 
+        // PASO 2 — Arrow function como manejador del evento submit
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); // evita recargar la página
+            e.preventDefault(); // PASO 3 — Cancela el envío tradicional (recarga)
 
-            const formData = new FormData(form);
-            const datos = Object.fromEntries(formData.entries());
+            const formData = new FormData(form);              // PASO 4
+            const datos = Object.fromEntries(formData.entries()); // PASO 5
 
-            console.log('Datos enviados:', datos);
+            console.log('Datos enviados:', datos); // PASO 6
         });
     </script>
 </body>

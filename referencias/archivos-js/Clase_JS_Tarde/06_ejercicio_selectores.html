@@ -1,51 +1,70 @@
+<!--
+    PROYECTO: Clase JS Tarde — Ejercicio 06: Selectores en práctica
+    OBJETIVO: Aplicar getElementsByTagName, querySelector y querySelectorAll
+    para seleccionar y modificar elementos reales del HTML.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>06 — Ejercicio selectores</title>
 </head>
 
-<h1>Título de prueba</h1>
-<h1>Título de prueba 2</h1>
+<!-- Elementos HTML que JavaScript va a seleccionar y modificar -->
+<h1>Título de prueba</h1>       <!-- Primer h1: índice 0 en la colección -->
+<h1>Título de prueba 2</h1>     <!-- Segundo h1: índice 1 -->
 
-<p>Hola mundo</p>
+<p>Hola mundo</p>               <!-- Párrafo que se reemplazará su texto -->
 
-<div></div>
+<div></div>                     <!-- Div vacío que recibirá un enlace -->
 
 <ul>
-    <li>Elemento 1</li>
+    <li>Elemento 1</li>         <!-- Items de lista que se colorearán -->
     <li>Elemento 2</li>
     <li>Elemento 3</li>
 </ul>
 
-<article></article>
+<article></article>            <!-- Contenedor vacío para un artículo dinámico -->
 
 <body>
 
     <script>
-        
-        const titulo = document.getElementsByTagName('h1');
-        console.log(titulo); // HTMLCollection 
-        titulo[1].style.color = 'red';
+        /*
+         * ALGORITMO PASO A PASO:
+         * 1. Seleccionar h1 → cambiar color del segundo
+         * 2. Seleccionar p → cambiar suport
+         * 3. Seleccionar div → insertar enlace HTML
+         * 4. Seleccionar li → colorear cada uno
+         * 5. Seleccionar article → insertar estructura completa
+         */
 
+        // PASO 1 — getElementsByTagName devuelve HTMLCollection (colección viva)
+        const titulo = document.getElementsByTagName('h1');
+        console.log(titulo);              // HTMLCollection con 2 elementos
+        titulo[1].style.color = 'red';    // Accedemos al segundo h1 por índice [1]
+
+        // PASO 2 — Seleccionar el párrafo y cambiar su texto visible
         const parrafo = document.getElementsByTagName('p');
-        console.log(parrafo); // HTMLCollection
+        console.log(parrafo);
         parrafo[0].innerText = 'Nuevo texto para el párrafo';
 
+        // PASO 3 — querySelector devuelve UN solo elemento (el primero que encuentra)
         const div = document.querySelector('div');
         console.log(div);
-        div.innerHTML = '<a href="index.html">Link de prueba</a>';
+        div.innerHTML = '<a href="index.html">Link de prueba</a>'; // Inserta HTML interno
 
+        // PASO 4 — querySelectorAll devuelve NodeList con todos los <li>
         const lista = document.querySelectorAll('ul li');
-        console.log(lista); // NodeList
+        console.log(lista);
         lista[0].style.color = 'blue';
         lista[1].style.color = 'green';
         lista[2].style.color = 'red';
 
+        // PASO 5 — Crear contenido de artículo con template literals (backticks `)
         const article = document.querySelector('article');
-        console.log(article); // NodeList
+        console.log(article);
         article.innerHTML = `
             <h2>Título del post</h2>
             <time datetime="2025-06-08">08 de junio de 2025</time><br>
@@ -54,11 +73,8 @@
             <a href="#">Leer más</a>
         `;
 
-        // Backsticks: 
-        // Windows: Presiona AltGr (la tecla junto a la barra espaciadora) 
-        // y luego la tecla de cierre de llave (}) dos veces.
-        // Mac: Usa la combinación Option (⌥) + .
-
+        // Tip: backticks (`) permiten strings multilínea e interpolación ${variable}
+        // Windows: AltGr + } dos veces | Mac: Option (⌥) + .
     </script>
 
 </body>

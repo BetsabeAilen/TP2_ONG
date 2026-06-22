@@ -1,37 +1,59 @@
+<!--
+    PROYECTO: Clase JS Tarde — Ejercicio 07b: Manipulación del DOM en práctica
+    OBJETIVO: Crear dinámicamente un div con contenido HTML, aplicarle estilos
+    e insertarlo en la página, luego modificar un párrafo interno.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>07b — Ejercicio manipulación DOM</title>
     <style>
+        /* Estilos para la clase .container que JS agregará al div creado */
         .container {
-            background-color: rgb(241, 68, 68);
-            border-radius: 1rem;
-            padding: 1rem;
-            box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1);
-            width: 50%;
+            background-color: rgb(241, 68, 68);  /* Fondo rojo */
+            border-radius: 1rem;                  /* Esquinas redondeadas */
+            padding: 1rem;                        /* Espacio interno */
+            box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.1); /* Sombra */
+            width: 50%;                           /* Mitad del ancho de la pantalla */
         }
     </style>
 </head>
 
 <body>
+    <!-- El body empieza vacío; JavaScript creará todo el contenido -->
 
     <script>
+        /*
+         * ALGORITMO PASO A PASO:
+         * 1. Crear un div en memoria
+         * 2. Cargar HTML interno con template literal
+         * 3. Agregar clase CSS para estilizar
+         * 4. Insertar el div en el body (visible en pantalla)
+         * 5. Buscar el párrafo dentro del div y cambiar su texto
+         */
 
+        // PASO 1 — Crear elemento <div> (solo en memoria, aún invisible)
         const nuevoDiv = document.createElement('div');
+
+        // PASO 2 — Definir el contenido HTML interno del div
         nuevoDiv.innerHTML = `
              <h1>Título de prueba</h1>
              <p>Hola mundo</p>
              <a href="index.html">Volver al inicio</a>
          `;
-        nuevoDiv.classList.add('container');
-        document.body.appendChild(nuevoDiv);
-        
-        const parrafo = nuevoDiv.querySelector('p');
-        parrafo.innerText = 'Texto cambiado';
 
+        // PASO 3 — Agregar clase CSS para que apliquen los estilos de .container
+        nuevoDiv.classList.add('container');
+
+        // PASO 4 — Insertar el div como hijo del body → ahora es visible
+        document.body.appendChild(nuevoDiv);
+
+        // PASO 5 — Buscar el <p> DENTRO del div recién creado y modificar su texto
+        const parrafo = nuevoDiv.querySelector('p'); // querySelector relativo al div
+        parrafo.innerText = 'Texto cambiado';
     </script>
 </body>
 

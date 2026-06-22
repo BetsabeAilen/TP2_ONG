@@ -1,35 +1,50 @@
+/*
+ * PROYECTO: menu-flex — styles.css
+ * OBJETIVO: Navbar horizontal con logo fijo a la izquierda y links a la derecha.
+ *
+ * ESTRUCTURA PASO A PASO:
+ * 1. Reset universal
+ * 2. ul como contenedor flex horizontal
+ * 3. li como items sin viñetas
+ * 4. Primer li (logo) posicionado absolutamente a la izquierda
+ * 5. Media query: cambio de color en pantallas ≤ 600px
+ */
+
+/* PASO 1 — Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* PASO 2 — Barra de navegación flex: items en fila, alineados al final (derecha) */
 ul {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: end;       /* Empuja items hacia la derecha */
     height: 50px;
     background-color: chartreuse;
-    position: relative;
-    align-items: center;
+    position: relative;           /* Referencia para posicionar el logo */
+    align-items: center;          /* Centra items verticalmente */
 }
 
+/* PASO 3 — Items de lista sin viñetas, con margen derecho */
 li {
     list-style: none;
     margin-right: 12px;
 }
 
+/* PASO 4 — Logo (primer hijo): posicionado absolutamente a la izquierda, centrado vertical */
 li:nth-child(1) {
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Centrado vertical perfecto */
 }
 
+/* PASO 5 — Responsive: en pantallas pequeñas cambia el color de fondo */
 @media (max-width: 600px) {
-
     ul {
         background-color: red;
     }
-
 }

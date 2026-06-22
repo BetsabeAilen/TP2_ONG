@@ -1,39 +1,47 @@
+<!--
+    PROYECTO: Clase JS Tarde — Lección 04: Relaciones entre nodos del DOM
+    OBJETIVO: Aprender a navegar el árbol del DOM accediendo a nodos
+    padres, hijos y hermanos de un elemento HTML.
+-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>04 — Relaciones entre nodos</title>
 </head>
 
 <body>
 
     <script>
+        /*
+         * El DOM (Document Object Model) representa el HTML como un árbol de nodos.
+         * Cada elemento puede tener padres, hijos y hermanos.
+         * "elemento" aquí es una variable de ejemplo que representaría
+         * un nodo HTML seleccionado previamente con querySelector, etc.
+         */
 
-// Relaciones entre Nodos
+        // ═══ PASO 1 — Nodos PADRES ═══
+        // Subir un nivel en el árbol del DOM.
+        elemento.parentNode;       // Nodo padre directo (puede ser texto o elemento)
+        elemento.parentElement;    // Elemento padre directo (solo etiquetas HTML)
 
-        // Padres
-        elemento.parentNode; // Nodo padre directo
-        elemento.parentElement; // Elemento padre directo
+        // ═══ PASO 2 — Nodos HIJOS ═══
+        // Descender un nivel: todo lo que está dentro del elemento.
+        elemento.childNodes;           // Todos los nodos hijos (incluye texto, comentarios)
+        elemento.children;             // Solo elementos HTML hijos (sin nodos de texto)
+        elemento.firstChild;           // Primer nodo hijo (puede ser texto)
+        elemento.firstElementChild;    // Primer elemento HTML hijo
+        elemento.lastChild;            // Último nodo hijo
+        elemento.lastElementChild;     // Último elemento HTML hijo
 
-
-        // Hijos
-        elemento.childNodes; // Todos los nodos hijos (incluyendo nodos de texto)
-        elemento.children; // Solo elementos hijos
-        elemento.firstChild; // Primer nodo hijo
-        elemento.firstElementChild; // Primer elemento hijo
-        elemento.lastChild; // Último nodo hijo
-        elemento.lastElementChild; // Último elemento hijo
-
-
-        // Hermanos
-        elemento.previousSibling; // Nodo hermano anterior
-        elemento.previousElementSibling; // Elemento hermano anterior
-        elemento.nextSibling; // Nodo hermano siguiente
-        elemento.nextElementSibling; // Elemento hermano siguiente
-
-
+        // ═══ PASO 3 — Nodos HERMANOS ═══
+        // Elementos al mismo nivel (mismo padre).
+        elemento.previousSibling;          // Nodo hermano anterior (puede ser texto)
+        elemento.previousElementSibling;   // Elemento hermano anterior
+        elemento.nextSibling;              // Nodo hermano siguiente
+        elemento.nextElementSibling;       // Elemento hermano siguiente
     </script>
 </body>
 
