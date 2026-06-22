@@ -29,6 +29,14 @@
     --fw-semibold: 600;
     --fw-bold: 700;
     --fw-extrabold: 800;
+
+    /* --- Navbar (altura normal / compacta al scroll) --- */
+    --navbar-height: 85px;
+    --navbar-height-scrolled: 56px;
+    --navbar-logo-height: 55px;
+    --navbar-logo-height-scrolled: 38px;
+    --navbar-link-size: var(--fs-xs);
+    --navbar-link-size-scrolled: 11px;
 }
 
 * {
@@ -92,11 +100,21 @@ h1, h2, h3, h4, h5, h6,
     justify-content: space-between;
     padding: 15px 40px;
     background-color: #fffbf2;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 100;
+    transition:
+        padding 0.35s ease,
+        box-shadow 0.35s ease,
+        background-color 0.35s ease;
+}
+
+/* Estado compacto al hacer scroll */
+.navbar--scrolled {
+    padding: 8px 40px;
+    box-shadow: 0 2px 16px rgba(20, 64, 97, 0.12);
 }
 
 .logo {
@@ -104,11 +122,21 @@ h1, h2, h3, h4, h5, h6,
     align-items: center;
     gap: 10px;
     text-decoration: none;
+    transition: gap 0.35s ease;
 }
 
 .logo img {
-    height: 55px;
+    height: var(--navbar-logo-height);
     width: auto;
+    transition: height 0.35s ease;
+}
+
+.navbar--scrolled .logo {
+    gap: 8px;
+}
+
+.navbar--scrolled .logo img {
+    height: var(--navbar-logo-height-scrolled);
 }
 
 .logo-text {
@@ -117,21 +145,37 @@ h1, h2, h3, h4, h5, h6,
     font-weight: var(--fw-bold);
     letter-spacing: 1px;
     line-height: 1.1;
+    transition: font-size 0.35s ease, letter-spacing 0.35s ease;
+}
+
+.navbar--scrolled .logo-text {
+    font-size: var(--navbar-link-size-scrolled);
+    letter-spacing: 0.6px;
 }
 
 .menu {
     display: flex;
     gap: 35px;
+    transition: gap 0.35s ease;
+}
+
+.navbar--scrolled .menu {
+    gap: 24px;
 }
 
 .menu a {
     text-decoration: none;
     color: #144061;
-    font-size: var(--fs-xs);
+    font-size: var(--navbar-link-size);
     font-weight: var(--fw-semibold);
     letter-spacing: 0.5px;
     display: flex;
     align-items: center;
+    transition: font-size 0.35s ease, color 0.3s ease;
+}
+
+.navbar--scrolled .menu a {
+    font-size: var(--navbar-link-size-scrolled);
 }
 
 .menu a.btn-nav-orange {
@@ -140,7 +184,12 @@ h1, h2, h3, h4, h5, h6,
     padding: 8px 20px;
     border-radius: 20px;
     font-weight: var(--fw-bold);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, padding 0.35s ease, font-size 0.35s ease;
+}
+
+.navbar--scrolled .menu a.btn-nav-orange {
+    padding: 5px 14px;
+    border-radius: 16px;
 }
 
 .menu a.btn-nav-orange:hover {
@@ -599,7 +648,19 @@ h1, h2, h3, h4, h5, h6,
         flex-direction: column;
         gap: 12px;
         padding: 12px 16px;
-        position: relative;
+    }
+
+    .navbar--scrolled {
+        padding: 8px 16px;
+        gap: 8px;
+    }
+
+    .navbar--scrolled .logo img {
+        height: 32px;
+    }
+
+    .navbar--scrolled .logo-text {
+        font-size: 10px;
     }
 
     .menu-toggle {
@@ -706,7 +767,15 @@ h1, h2, h3, h4, h5, h6,
         flex-direction: column;
         gap: 15px;
         padding: 15px 20px;
-        position: relative;
+    }
+
+    .navbar--scrolled {
+        padding: 10px 20px;
+        gap: 10px;
+    }
+
+    .navbar--scrolled .logo img {
+        height: 34px;
     }
 
     .menu-toggle {
