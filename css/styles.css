@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Títulos grandes / display (Fjalla One): banners, hero, secciones y números */
 .page-banner h1,
-.help-banner h1,
+.page-banner--help h1,
 .hero-content h1,
 .stats-top-title,
 .stats-bottom-title,
@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6,
 .program-intro h2,
 .program-impact h2,
 .program-steps h2,
-.contact-form h3,
+.contact-form-section h3,
 .modal-header h2,
 .modal-header--success h2,
 .stat h2,
@@ -801,6 +801,16 @@ h1, h2, h3, h4, h5, h6,
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
+.page-banner--help {
+    background-color: #fcac3d;
+    background-image: url('../Img/banner2.png');
+}
+
+.page-banner--help h1 {
+    color: #144061;
+    text-shadow: none;
+}
+
 .contact-intro,
 .map-intro {
     text-align: center;
@@ -838,7 +848,7 @@ h1, h2, h3, h4, h5, h6,
     line-height: 1.6;
 }
 
-.contact-form {
+.contact-form-section {
     max-width: 800px;
     width: 90%;
     background: #fff;
@@ -858,7 +868,7 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 14px;
 }
 
-.contact-form h3 {
+.contact-form-section h3 {
     color: #144061;
     font-size: var(--fs-block);
     font-weight: var(--fw-bold);
@@ -963,23 +973,6 @@ textarea,
 .help-main {
     padding-top: 80px;
     background-color: #fffbf2;
-}
-
-.help-banner {
-    background-color: #fcac3d;
-    background-image: url('../Img/banner2.png');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.help-banner h1 {
-    color: #144061;
-    font-size: var(--fs-banner);
-    font-weight: var(--fw-extrabold);
-    text-transform: uppercase;
 }
 
 .help-content {
@@ -1792,7 +1785,7 @@ textarea,
         line-height: 1.6;
     }
 
-    .contact-form {
+    .contact-form-section {
         padding: 18px 14px;
         border-radius: 12px;
         margin-top: 0;
@@ -1841,7 +1834,7 @@ textarea,
         line-height: 1.7;
     }
 
-    .contact-form {
+    .contact-form-section {
         padding: 22px 18px;
         border-radius: 14px;
         margin-top: 0;
@@ -2270,10 +2263,6 @@ textarea,
     color: #144061;
     line-height: 1.5;
     margin: 0;
-}
-
-.about .what-pillars {
-    padding: 20px 20px 0;
 }
 
 .what-quote-section {
