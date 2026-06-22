@@ -140,7 +140,24 @@ document.addEventListener('DOMContentLoaded', () => {
         activarImagen(0);
         resetSlideInterval();
     }
+
+    initNavbarScroll();
 });
+
+/* ===== NAVBAR FIJO + COMPACTO AL SCROLL ===== */
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const SCROLL_THRESHOLD = 60;
+
+    function updateNavbar() {
+        navbar.classList.toggle('navbar--scrolled', window.scrollY > SCROLL_THRESHOLD);
+    }
+
+    updateNavbar();
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+}
 
 /* ===== QUIERO AYUDAR MODALS (Dynamic) ===== */
 function getFormSection(title, svgPath, content) {
