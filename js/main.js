@@ -19,6 +19,11 @@ document.addEventListener('click', (e) => {
     const modalTrigger = e.target.closest('[data-modal]');
     if (modalTrigger) {
         openModal(modalTrigger.dataset.modal);
+        return;
+    }
+
+    if (e.target.closest('.modal-close')) {
+        closeModal();
     }
 });
 
@@ -208,6 +213,7 @@ function getSiteHeaderHTML() {
         </a>
         <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
         <nav class="menu">
+            ${navLink('index', 'INICIO')}
             ${navLink('quienesSomos', 'QUIÉNES SOMOS')}
             ${navLink('queHacemos', 'QUÉ HACEMOS')}
             ${navLink('mapa', 'PUNTOS DE ENCUENTRO')}
@@ -277,7 +283,7 @@ function getSiteFooterHTML() {
                             </a>
                         </li>
                         <li>
-                            <a href="#" aria-label="Instagram de Cuadernos Llenos">
+                            <a href="https://www.instagram.com/fundacioncimientos/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Cuadernos Llenos">
                                 <span class="site-footer-social-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2zm-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
                                 </span>
@@ -285,7 +291,7 @@ function getSiteFooterHTML() {
                             </a>
                         </li>
                         <li>
-                            <a href="#" aria-label="Facebook de Cuadernos Llenos">
+                            <a href="https://www.facebook.com/Cimientos/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Cuadernos Llenos">
                                 <span class="site-footer-social-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><path d="M13 3h4a1 1 0 011 1v3h-3a1 1 0 00-1 1v3h4l-1 4h-3v8h-4v-8H9v-4h2V8a5 5 0 015-5z"/></svg>
                                 </span>
@@ -293,7 +299,7 @@ function getSiteFooterHTML() {
                             </a>
                         </li>
                         <li>
-                            <a href="#" aria-label="LinkedIn de Cuadernos Llenos">
+                            <a href="https://www.linkedin.com/company/fundacioncimientos/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Cuadernos Llenos">
                                 <span class="site-footer-social-icon" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><path d="M6.5 8a2 2 0 110-4 2 2 0 010 4zM4 9h5v12H4V9zm7 0h4.7v1.7h.1c.7-1.2 2.3-2.5 4.8-2.5 5.1 0 6.1 3.4 6.1 7.8V21h-5v-6.1c0-1.5 0-3.4-2.1-3.4-2.1 0-2.4 1.6-2.4 3.3V21h-5V9z"/></svg>
                                 </span>
@@ -314,11 +320,7 @@ function getSiteFooterHTML() {
 }
 
 function initSiteFooter() {
-    const existingFooter = document.querySelector('footer.contact, footer#contacto, footer.site-footer');
-
-    if (existingFooter && !existingFooter.classList.contains('site-footer')) {
-        existingFooter.outerHTML = getSiteFooterHTML();
-    } else if (!existingFooter) {
+    if (!document.querySelector('footer.site-footer')) {
         document.body.insertAdjacentHTML('beforeend', getSiteFooterHTML());
     }
 }
@@ -506,7 +508,7 @@ function getModalSuccessContent(type) {
     if (content.paragraphs.length === 1) {
         return `
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+            <button class="modal-close" type="button" aria-label="Cerrar">&times;</button>
             <div class="modal-header modal-header--success">
                 <h2>${content.title}</h2>
             </div>
@@ -521,7 +523,7 @@ function getModalSuccessContent(type) {
 
     return `
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+            <button class="modal-close" type="button" aria-label="Cerrar">&times;</button>
             <div class="modal-header modal-header--success">
                 <h2>${content.title}</h2>
                 <p>${lead}</p>
@@ -613,7 +615,7 @@ function getModalContent(id) {
     if (id === 'modal-voluntario') {
         return `
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-close" type="button" aria-label="Cerrar">&times;</button>
             <div class="modal-header">
                 <h2>Quiero ser voluntario</h2>
                 <p>Tu acompañamiento puede cambiar una trayectoria escolar, devolver confianza y ganas de aprender.</p>
@@ -674,7 +676,7 @@ function getModalContent(id) {
     } else if (id === 'modal-espacio') {
         return `
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-close" type="button" aria-label="Cerrar">&times;</button>
             <div class="modal-header">
                 <h2>Ofrecer un espacio</h2>
                 <p>Tu lugar puede transformarse en un nuevo punto de encuentro para aprender</p>
@@ -748,7 +750,7 @@ function getModalContent(id) {
     } else if (id === 'modal-donacion') {
         return `
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-close" type="button" aria-label="Cerrar">&times;</button>
             <div class="modal-header">
                 <h2>Hacé una donación</h2>
                 <p>Cada donación ayuda a sostener los espacios de apoyo escolar, preparar materiales y acompañar a chicos y adolescentes que necesitan una red para continuar su trayectoria educativa.</p>
@@ -965,21 +967,12 @@ function initDonacionModal(overlay) {
 let activeModalOverlay = null;
 
 function openModal(id) {
-    // Crear el overlay
     activeModalOverlay = document.createElement('div');
     activeModalOverlay.classList.add('modal-overlay');
     activeModalOverlay.id = id;
-    
-    // Definir el HTML
     activeModalOverlay.innerHTML = getModalContent(id);
-    
-    // Agregar al DOM
     document.body.appendChild(activeModalOverlay);
-    
-    // Forzar reflow para la transición
     void activeModalOverlay.offsetWidth;
-    
-    // Mostrar
     activeModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
@@ -992,8 +985,7 @@ function closeModal() {
     if (activeModalOverlay) {
         activeModalOverlay.classList.remove('active');
         document.body.style.overflow = 'auto';
-        
-        // Esperar a que termine la transición para removerlo del DOM
+
         setTimeout(() => {
             if (activeModalOverlay && activeModalOverlay.parentNode) {
                 activeModalOverlay.parentNode.removeChild(activeModalOverlay);
@@ -1003,7 +995,6 @@ function closeModal() {
     }
 }
 
-// Cerrar modal al hacer clic fuera del contenido
 window.addEventListener('click', function(event) {
     if (event.target.classList.contains('modal-overlay')) {
         closeModal();

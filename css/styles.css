@@ -1,7 +1,5 @@
 /* =====================================================================
    TOKENS TIPOGRÁFICOS
-   La FAMILIA queda pendiente de elegir: solo hay que cambiar
-   --font-heading y --font-body y se actualiza toda la web.
    ===================================================================== */
 :root {
     /* --- Familias (sistema de 3 fuentes) --- */
@@ -54,7 +52,6 @@ body {
 
 /* Familia por defecto de títulos: subtítulos y títulos de tarjeta (Josefin Sans) */
 h1, h2, h3, h4, h5, h6,
-.what-pillar-title,
 .help-card-title,
 .program-cta-text,
 .form-section-title,
@@ -63,13 +60,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* Títulos grandes / display (Fjalla One): banners, hero, secciones y números */
-.contact-banner h1,
+.page-banner h1,
 .help-banner h1,
 .hero-content h1,
 .stats-top-title,
 .stats-bottom-title,
 .about-title,
 .contact-intro h2,
+.map-intro h2,
 .help-content h2,
 .help-options-title,
 .history-section h2,
@@ -596,60 +594,6 @@ h1, h2, h3, h4, h5, h6,
     font-weight: var(--fw-bold);
 }
 
-/* ===== CARDS ===== */
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.card {
-    flex: 1;
-    min-width: 220px;
-    max-width: 280px;
-    text-align: center;
-}
-
-.card h3 {
-    color: #144061;
-    font-size: var(--fs-body);
-    font-weight: var(--fw-bold);
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-}
-
-.card-img-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.card-img-wrapper img {
-    width: 100%;
-    height: 350px;
-    display: block;
-    border-radius: 6px;
-}
-
-.card-caption {
-    position: absolute;
-    bottom: 6%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(252, 172, 61, 0.9);
-    color: #fff;
-    padding: 8px 14px;
-    font-size: var(--fs-micro);
-    font-weight: var(--fw-semibold);
-    text-align: center;
-    border-radius: 4px;
-    width: 75%;
-    line-height: 1.3;
-}
-
-/* ===== CARDS ===== */
 @media (max-width: 600px) {
     .navbar {
         flex-direction: column;
@@ -753,15 +697,7 @@ h1, h2, h3, h4, h5, h6,
     .about-content {
         padding-left: 18px;
         padding-right: 18px;
-    }
-
-    .about-content {
         flex-direction: column;
-    }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
     }
 }
 
@@ -838,11 +774,6 @@ h1, h2, h3, h4, h5, h6,
         padding-right: 25px;
         flex-direction: column;
     }
-
-    .cards {
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 /* ===== CONTACTO ===== */
@@ -851,7 +782,7 @@ h1, h2, h3, h4, h5, h6,
     padding: 80px 0 64px;
 }
 
-.contact-banner {
+.page-banner {
     background-color: #144061;
     background-image: url('../Img/banner1.png');
     background-size: cover;
@@ -861,7 +792,7 @@ h1, h2, h3, h4, h5, h6,
     text-align: center;
 }
 
-.contact-banner h1 {
+.page-banner h1 {
     color: #fff;
     font-size: var(--fs-banner);
     font-weight: var(--fw-extrabold);
@@ -870,7 +801,8 @@ h1, h2, h3, h4, h5, h6,
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-.contact-intro {
+.contact-intro,
+.map-intro {
     text-align: center;
     max-width: 800px;
     margin: 40px auto 30px;
@@ -878,7 +810,8 @@ h1, h2, h3, h4, h5, h6,
     color: #333;
 }
 
-.contact-intro h2 {
+.contact-intro h2,
+.map-intro h2 {
     color: #144061;
     font-size: var(--fs-section);
     font-weight: var(--fw-bold);
@@ -888,7 +821,8 @@ h1, h2, h3, h4, h5, h6,
     align-items: center;
 }
 
-.contact-intro h2::after {
+.contact-intro h2::after,
+.map-intro h2::after {
     content: "";
     display: block;
     width: 50px;
@@ -898,7 +832,8 @@ h1, h2, h3, h4, h5, h6,
     margin-top: 12px;
 }
 
-.contact-intro p {
+.contact-intro p,
+.map-intro p {
     font-size: var(--fs-body);
     line-height: 1.6;
 }
@@ -915,7 +850,6 @@ h1, h2, h3, h4, h5, h6,
     z-index: 2;
 }
 
-.contact-form h3,
 .contact-info h4,
 .collab-title {
     color: #144061;
@@ -925,7 +859,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .contact-form h3 {
+    color: #144061;
     font-size: var(--fs-block);
+    font-weight: var(--fw-bold);
     margin-bottom: 18px;
 }
 
@@ -1058,7 +994,7 @@ textarea,
     color: #144061;
     font-size: var(--fs-section);
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-weight: var(--fw-bold);
     display: flex;
     flex-direction: column;
@@ -1132,10 +1068,6 @@ textarea,
     background-color: #fcac3d;
     opacity: 0.5;
     margin: 0 auto 50px;
-}
-
-.help-options-title {
-    margin-bottom: 40px;
 }
 
 .help-cards {
@@ -1533,13 +1465,6 @@ textarea,
 }
 
 /* ===== MODAL DONACIÓN ===== */
-.donacion-intro {
-    color: #333;
-    font-size: var(--fs-body);
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
-
 .donacion-elegir {
     color: #144061;
     font-size: var(--fs-body);
@@ -1852,15 +1777,17 @@ textarea,
         padding: 64px 0 40px;
     }
 
-    .contact-banner h1 {
+    .page-banner h1 {
         font-size: 28px;
     }
 
-    .contact-intro h2 {
+    .contact-intro h2,
+    .map-intro h2 {
         font-size: 22px;
     }
 
-    .contact-intro p {
+    .contact-intro p,
+    .map-intro p {
         font-size: 15px;
         line-height: 1.6;
     }
@@ -1899,15 +1826,17 @@ textarea,
         padding: 70px 0 48px;
     }
 
-    .contact-banner h1 {
+    .page-banner h1 {
         font-size: 32px;
     }
 
-    .contact-intro h2 {
+    .contact-intro h2,
+    .map-intro h2 {
         font-size: 24px;
     }
 
-    .contact-intro p {
+    .contact-intro p,
+    .map-intro p {
         font-size: 16px;
         line-height: 1.7;
     }
@@ -2328,8 +2257,7 @@ textarea,
     flex: 1;
 }
 
-.what-pillar h3,
-.what-pillar-title {
+.what-pillar h3 {
     color: #144061;
     font-size: var(--fs-card-title);
     font-weight: var(--fw-bold);
@@ -2337,7 +2265,7 @@ textarea,
     text-align: left;
 }
 
-.what-pillar-content p:not(.what-pillar-title) {
+.what-pillar-content p {
     font-size: var(--fs-sm);
     color: #144061;
     line-height: 1.5;
